@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immersive Experiences — Make Unit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; }
+
+  nav { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 3rem; border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); }
+  .nav-logo img { height: 22px; display: block; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--ink); transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+
+  .page-header { padding: 5rem 3rem 3.5rem; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid var(--rule); }
+  .page-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .page-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--blue); }
+  .page-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+  .page-sub { margin-top: 1rem; font-size: 1rem; font-weight: 300; color: var(--mid); max-width: 55ch; }
+
+  /* ─── FEATURED ─── */
+  .projects-featured { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+
+  .project-featured { border-bottom: 1px solid var(--rule); padding: 4rem 0; }
+
+  .project-featured .feat-image { aspect-ratio: 16/7; overflow: hidden; background: var(--light); margin-bottom: 2rem; }
+  .project-featured .feat-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+  .project-featured:hover .feat-image img { transform: scale(1.02); }
+
+  .project-featured .feat-meta { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start; }
+  .feat-client { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); padding-top: 0.4rem; }
+  .feat-title { font-size: clamp(1.75rem, 3vw, 2.75rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 0.75rem; }
+  .feat-desc { font-size: 0.9rem; font-weight: 300; color: var(--mid-dark); line-height: 1.75; margin-bottom: 1.25rem; }
+  .feat-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .feat-link { display: inline-block; margin-top: 1.25rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--ink); padding-bottom: 0.1rem; transition: color 0.15s, border-color 0.15s; }
+  .feat-link:hover { color: var(--blue); border-color: var(--blue); }
+
+  /* ─── REGULAR GRID ─── */
+  .projects-label { max-width: 1100px; margin: 0 auto; padding: 3.5rem 3rem 0; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
+  .projects { max-width: 1100px; margin: 0 auto; padding: 0 3rem 6rem; }
+
+  .project { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid var(--rule); padding: 3.5rem 0; align-items: start; }
+  .project-image { aspect-ratio: 16/10; overflow: hidden; background: var(--light); }
+  .project-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .project:hover .project-image img { transform: scale(1.03); }
+  .project-info { padding: 0 0 0 3rem; }
+  .project-client { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+  .project-title { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
+  .project-desc { font-size: 0.875rem; font-weight: 300; color: var(--mid-dark); line-height: 1.7; margin-bottom: 1.5rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border: 1px solid var(--rule); border-radius: 2px; color: var(--mid); }
+
+  .project:nth-child(even) { direction: rtl; }
+  .project:nth-child(even) > * { direction: ltr; }
+  .project:nth-child(even) .project-info { padding: 0 3rem 0 0; }
+
+  footer { border-top: 1px solid var(--rule); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .footer-copy { font-size: 0.75rem; color: var(--mid); }
+  .footer-email { font-size: 0.75rem; font-weight: 500; color: var(--ink); text-decoration: none; }
+  .footer-email:hover { color: var(--blue); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .page-header { padding: 3.5rem 1.5rem 2.5rem; }
+    .projects-featured, .projects-label, .projects { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .project-featured .feat-meta { grid-template-columns: 1fr; gap: 1rem; }
+    .project, .project:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
+    .project-info, .project:nth-child(even) .project-info { padding: 1.5rem 0 0; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-wordmark.png" alt="Make Unit" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="immersive-experiences.html" class="active">Immersive</a></li>
+    <li><a href="content-development.html">Content</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="page-header">
+  <p class="page-eyebrow">Work</p>
+  <h1 class="page-title">Immersive<br>Experiences</h1>
+  <p class="page-sub">VR, AR, large-scale installations and interactive productions — from brief to delivery.</p>
+</header>
+
+<!-- ─── FEATURED ─── -->
+<div class="projects-featured">
+
+  <article class="project-featured">
+    <div class="feat-image">
+      <img src="assets/images/objeto-do-tempo.jpg" alt="Objeto do Tempo" loading="lazy">
+    </div>
+    <div class="feat-meta">
+      <p class="feat-client">Joao Wilbert · SESI Lab</p>
+      <div>
+        <h2 class="feat-title">Objeto do Tempo</h2>
+        <p class="feat-desc">Project management for a large-scale participatory installation by artist Joao Wilbert, currently at SESI Lab in Brasília. The work draws on responses from people across Brazil about the passing of time — translating them into incidental sounds, rhythms and visual columns that mark the succession of voices. Coordination spanned teams in London, San Francisco, China, Brazil and Argentina.</p>
+        <div class="feat-tags">
+          <span class="tag">Installation</span>
+          <span class="tag">Interactive</span>
+          <span class="tag">Brasil</span>
+        </div>
+        <a href="http://objetodotempo.art/" class="feat-link" target="_blank" rel="noopener">View project →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-featured">
+    <div class="feat-image">
+      <img src="assets/images/science-museum.jpg" alt="Science Fiction: Voyage to the Edge of Imagination" loading="lazy">
+    </div>
+    <div class="feat-meta">
+      <p class="feat-client">Science Museum London</p>
+      <div>
+        <h2 class="feat-title">Science Fiction: Voyage to the Edge of Imagination</h2>
+        <p class="feat-desc">Video and soundscape content production for one of the Science Museum London's most ambitious exhibitions — an immersive journey through science fiction's relationship with real science, spanning props, environments and original AV content.</p>
+        <div class="feat-tags">
+          <span class="tag">Exhibition</span>
+          <span class="tag">Video</span>
+          <span class="tag">Soundscape</span>
+        </div>
+        <a href="https://www.sciencemuseum.org.uk/see-and-do/science-fiction" class="feat-link" target="_blank" rel="noopener">View project →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-featured">
+    <div class="feat-image">
+      <img src="assets/images/summit-vanderbilt.jpg" alt="Summit at One Vanderbilt" loading="lazy">
+    </div>
+    <div class="feat-meta">
+      <p class="feat-client">Framestore NYC</p>
+      <div>
+        <h2 class="feat-title">Summit at One Vanderbilt</h2>
+        <p class="feat-desc">More than 12 months of production support for the multi-sensory art experience atop One Vanderbilt in Midtown Manhattan. Make Unit worked alongside Framestore NYC across the full production pipeline — from development through on-site delivery — for one of New York City's most ambitious permanent installations.</p>
+        <div class="feat-tags">
+          <span class="tag">Installation</span>
+          <span class="tag">Permanent</span>
+          <span class="tag">New York</span>
+        </div>
+        <a href="https://www.framestore.com/work/unity-and-transcendence" class="feat-link" target="_blank" rel="noopener">View project →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-featured">
+    <div class="feat-image">
+      <img src="assets/images/got.jpg" alt="Game of Thrones VR" loading="lazy">
+    </div>
+    <div class="feat-meta">
+      <p class="feat-client">Framestore</p>
+      <div>
+        <h2 class="feat-title">Game of Thrones VR & Magic Leap</h2>
+        <p class="feat-desc">Two experiences celebrating the final season of Game of Thrones, produced with the award-winning team at Framestore — one in VR and one on Magic Leap's mixed reality platform.</p>
+        <div class="feat-tags">
+          <span class="tag">VR</span>
+          <span class="tag">Mixed Reality</span>
+          <span class="tag">Magic Leap</span>
+        </div>
+        <a href="https://www.framestore.com/work/game-thrones-beyond-wall" class="feat-link" target="_blank" rel="noopener">View project →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-featured">
+    <div class="feat-image">
+      <img src="assets/images/capital-one-featured.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
+    </div>
+    <div class="feat-meta">
+      <p class="feat-client">Capital One × HUSH</p>
+      <div>
+        <h2 class="feat-title">Workplace Brand Visualizations</h2>
+        <p class="feat-desc">Production support for the permanent installation at Capital One's new headquarters in McLean, Virginia. Working alongside the incredible team at HUSH, Make Unit helped deliver a suite of daily and seasonal data visualizations — creating an ever-changing digital environment across the building's monumental screens.</p>
+        <div class="feat-tags">
+          <span class="tag">Installation</span>
+          <span class="tag">Data Viz</span>
+          <span class="tag">Permanent</span>
+        </div>
+        <a href="https://heyhush.com/work/capital-one-workplace-brand-visualizations/" class="feat-link" target="_blank" rel="noopener">View project →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-featured">
+    <div class="feat-image">
+      <img src="assets/images/abbey-road-wide.jpg" alt="Inside Abbey Road" loading="lazy">
+    </div>
+    <div class="feat-meta">
+      <p class="feat-client">Google Creative Lab</p>
+      <div>
+        <h2 class="feat-title">Inside Abbey Road</h2>
+        <p class="feat-desc">Production support for a Street View experience that opened the doors of the iconic British recording studios for the first time. The production used WebGL, CSS3 and Three.js to create fully immersive 3D rooms with positional audio — all in-browser. Duties included production management, contracts, liaison with third parties and stakeholder management.</p>
+        <div class="feat-tags">
+          <span class="tag">WebVR</span>
+          <span class="tag">WebGL</span>
+          <span class="tag">Production</span>
+        </div>
+        <a href="https://artsandculture.google.com/project/abbey-road" class="feat-link" target="_blank" rel="noopener">View project →</a>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<!-- ─── REGULAR GRID ─── -->
+<p class="projects-label">More work</p>
+<div class="projects">
+
+  <article class="project">
+    <div class="project-image">
+      <img src="assets/images/hbo-my-daemon.png" alt="HBO His Dark Materials — My Daemon" loading="lazy">
+    </div>
+    <div class="project-info">
+      <p class="project-client">HBO × Framestore</p>
+      <h2 class="project-title">His Dark Materials — My Daemon</h2>
+      <p class="project-desc">An augmented reality app that combined wellbeing with the rich narrative of His Dark Materials. Users bonded with a personal dæmon — choosing from a range of animals that responded to real-world activity and mood — extending the world of the HBO series into everyday life. Produced with Framestore in 2020.</p>
+      <div class="project-tags">
+        <span class="tag">AR</span>
+        <span class="tag">iOS</span>
+        <span class="tag">HBO</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-image">
+      <img src="assets/images/facebook-share-your-voice.jpg" alt="Facebook Share Your Voice" loading="lazy">
+    </div>
+    <div class="project-info">
+      <p class="project-client">Facebook × HUSH</p>
+      <h2 class="project-title">Share Your Voice</h2>
+      <p class="project-desc">A corporate event installation at Facebook HQ where attendees could create a unique voice signature and watch it displayed alongside others on the centre stage of the event. Designed by HUSH, produced by Make Unit in 2020.</p>
+      <div class="project-tags">
+        <span class="tag">Live Event</span>
+        <span class="tag">Interactive</span>
+        <span class="tag">Installation</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-image">
+      <img src="assets/images/mountain-dew.jpg" alt="Mountain Dew VR" loading="lazy">
+    </div>
+    <div class="project-info">
+      <p class="project-client">Mountain Dew × Firstborn</p>
+      <h2 class="project-title">DEWcision VR — NASCAR Experience</h2>
+      <p class="project-desc">Production management for an Unreal Engine VR experience where fans picked their Mountain Dew flavor by racing with Dale Earnhardt Jr. The production process was closer to game development than film — testing and debugging paramount to success.</p>
+      <div class="project-tags">
+        <span class="tag">VR</span>
+        <span class="tag">Unreal Engine</span>
+        <span class="tag">Production</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-image" style="background: var(--light); display:flex; align-items:center; justify-content:center; min-height: 260px;">
+      <span style="font-size: 0.75rem; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase;">Jackie Robinson · Google</span>
+    </div>
+    <div class="project-info">
+      <p class="project-client">Google Creative Lab</p>
+      <h2 class="project-title">Jackie Robinson VR — Google Expeditions</h2>
+      <p class="project-desc">Make Unit helped Google Creative Lab develop the Jackie Robinson VR experience for the Google Expeditions platform, in collaboration with Ken Burns and his documentary. The team built the experience with art directors, copywriters, 3D artists and engineers.</p>
+      <div class="project-tags">
+        <span class="tag">VR</span>
+        <span class="tag">Education</span>
+        <span class="tag">Google Cardboard</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-image">
+      <img src="assets/images/imagination.jpg" alt="Imagination Beijing" loading="lazy">
+    </div>
+    <div class="project-info">
+      <p class="project-client">Imagination</p>
+      <h2 class="project-title">Big Interactive Shows — Beijing & New Delhi</h2>
+      <p class="project-desc">Production support for large-scale live events experienced by millions. Make Unit managed the development of content and the on-site digital delivery of applications, games and visual content for a 50×6m LED screen.</p>
+      <p class="project-desc">Tasks included creative production, team management of animators, designers, art directors and developers in London, plus on-site delivery in Beijing and New Delhi.</p>
+      <div class="project-tags">
+        <span class="tag">Live Events</span>
+        <span class="tag">Interactive</span>
+        <span class="tag">LED Installation</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-image">
+      <img src="assets/images/kipling.jpg" alt="Kipling Interactive Windows" loading="lazy">
+    </div>
+    <div class="project-info">
+      <p class="project-client">Kipling × The Rumpus Room</p>
+      <h2 class="project-title">Interactive Christmas Windows</h2>
+      <p class="project-desc">A Christmas activation where shoppers could touch the store window, get their picture taken, apply a filter and watch it integrate into the live animation on screen. Developed in Cinder C++.</p>
+      <div class="project-tags">
+        <span class="tag">Interactive</span>
+        <span class="tag">Cinder C++</span>
+        <span class="tag">Retail</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-image">
+      <img src="assets/images/tate.jpg" alt="Meet Tate Britain" loading="lazy">
+    </div>
+    <div class="project-info">
+      <p class="project-client">The Rumpus Room × The Brooklyn Brothers</p>
+      <h2 class="project-title">Meet Tate Britain</h2>
+      <p class="project-desc">A digital installation for Tate Britain's £45m relaunch. Working with The Rumpus Room and The Brooklyn Brothers, Make Unit helped deliver an in-gallery experience that interlaces real-time photographic submissions from the public with 500 years of British Art.</p>
+      <div class="project-tags">
+        <span class="tag">Installation</span>
+        <span class="tag">Interactive</span>
+        <span class="tag">Gallery</span>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<footer>
+  <span class="footer-copy">© 2026 Make Unit Inc.</span>
+  <a href="mailto:hello@makeunit.com" class="footer-email">hello@makeunit.com</a>
+</footer>
+
+</body>
+</html>

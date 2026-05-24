@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make Unit Inc.</title>
+<meta name="description" content="Creative production support for mix media productions. Human artists and AI-powered workflows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 3rem; border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); }
+  .nav-logo img { height: 22px; display: block; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--ink); transition: color 0.15s; }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* HERO */
+  .hero { padding: 7rem 3rem 6rem; max-width: 1100px; margin: 0 auto; }
+  .hero-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--blue); }
+  .hero-headline { font-size: clamp(3rem, 7vw, 6rem); font-weight: 900; line-height: 1; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 2rem; max-width: 14ch; }
+  .hero-headline em { font-style: normal; color: var(--blue); }
+  .hero-body { font-size: 1.1rem; font-weight: 300; color: var(--mid); max-width: 52ch; line-height: 1.7; margin-bottom: 3.5rem; }
+  .hero-pills { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .pill { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border: 1.5px solid var(--ink); border-radius: 2px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--ink); transition: all 0.15s; }
+  .pill:hover { background: var(--ink); color: var(--bg); }
+  .pill.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .pill.primary:hover { background: var(--blue); border-color: var(--blue); }
+  .pill span { font-size: 1rem; }
+
+  /* ABOUT STRIP */
+  .about-strip { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 5rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; }
+  .about-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; }
+  .about-text { font-size: 1rem; font-weight: 300; color: var(--mid-dark); line-height: 1.75; }
+  .about-text strong { font-weight: 600; color: var(--ink); }
+
+  /* SERVICES */
+  .services { padding: 5rem 3rem; max-width: 1100px; margin: 0 auto; }
+  .services-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 3rem; }
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border: 1px solid var(--rule); }
+  .service-card { padding: 2.5rem; border-right: 1px solid var(--rule); text-decoration: none; display: block; transition: background 0.15s; }
+  .service-card:last-child { border-right: none; }
+  .service-card:hover { background: var(--light); }
+  .service-card:hover .service-arrow { transform: translate(4px, -4px); }
+  .service-num { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: var(--mid); margin-bottom: 1.5rem; font-variant-numeric: tabular-nums; }
+  .service-title { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.15; }
+  .service-desc { font-size: 0.875rem; font-weight: 300; color: var(--mid); line-height: 1.65; margin-bottom: 2rem; }
+  .service-arrow { display: inline-block; font-size: 1.25rem; transition: transform 0.2s; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--rule); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .footer-copy { font-size: 0.75rem; color: var(--mid); }
+  .footer-email { font-size: 0.75rem; font-weight: 500; color: var(--ink); text-decoration: none; letter-spacing: 0.02em; }
+  .footer-email:hover { color: var(--blue); }
+
+  @media (max-width: 680px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero { padding: 4rem 1.5rem 4rem; }
+    .about-strip { grid-template-columns: 1fr; gap: 2.5rem; padding: 3.5rem 1.5rem; }
+    .services { padding: 3.5rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none; border-bottom: 1px solid var(--rule); }
+    .service-card:last-child { border-bottom: none; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-wordmark.png" alt="Make Unit" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="immersive-experiences.html">Immersive</a></li>
+    <li><a href="content-development.html">Content</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="hero">
+    <p class="hero-eyebrow">Creative Production Support</p>
+    <h1 class="hero-headline">We make <em>it</em> happen.</h1>
+    <p class="hero-body">Make Unit supports mix media productions and develops original content — bringing together a trusted network of human artists and AI-powered workflows to amplify creative output and elevate every production.</p>
+    <div class="hero-pills">
+      <a href="immersive-experiences.html" class="pill primary"><span>↗</span> Immersive Experiences</a>
+      <a href="content-development.html" class="pill"><span>↗</span> Content Development</a>
+    </div>
+  </section>
+
+  <div class="about-strip">
+    <div>
+      <p class="about-label">How it works</p>
+      <p class="about-text">We work in <strong>short or long contracts</strong>. We can provide support from the brief stage, once scoping begins, or once scope and budget are agreed — carrying the project through to delivery.</p>
+    </div>
+    <div>
+      <p class="about-label">What we're good at</p>
+      <p class="about-text"><strong>Complex, creatively led projects</strong> that include innovation and a strong storytelling element. We work solo or integrate into larger teams. We like those.</p>
+    </div>
+  </div>
+
+  <section class="services">
+    <p class="services-label">Areas of work</p>
+    <div class="services-grid">
+      <a href="immersive-experiences.html" class="service-card">
+        <p class="service-num">01</p>
+        <h2 class="service-title">Immersive<br>Experiences</h2>
+        <p class="service-desc">VR, AR, MR and large-scale interactive installations for Google, Framestore, HUSH, Imagination and more.</p>
+        <span class="service-arrow">↗</span>
+      </a>
+      <a href="content-development.html" class="service-card">
+        <p class="service-num">02</p>
+        <h2 class="service-title">Content<br>Development</h2>
+        <p class="service-desc">Live action, animation and AI-enhanced pipelines — 2D, 3D and hybrid workflows for original productions.</p>
+        <span class="service-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="footer-copy">© 2026 Make Unit Inc.</span>
+  <a href="mailto:hello@makeunit.com" class="footer-email">hello@makeunit.com</a>
+</footer>
+
+</body>
+</html>

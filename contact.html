@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Make Unit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; }
+
+  nav { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 3rem; border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); }
+  .nav-logo img { height: 22px; display: block; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--ink); transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+
+  .contact-wrap { max-width: 1100px; margin: 0 auto; padding: 6rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+
+  .contact-left {}
+  .page-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+  .page-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--blue); }
+  .page-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin-bottom: 1.5rem; }
+  .contact-email-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.5rem; }
+  .contact-email { display: block; font-size: 1.1rem; font-weight: 600; color: var(--ink); text-decoration: none; margin-bottom: 3rem; transition: color 0.15s; }
+  .contact-email:hover { color: var(--blue); }
+
+  .person-block { border-top: 1px solid var(--rule); padding-top: 2rem; }
+  .person-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); margin-bottom: 1rem; }
+  .person-name { font-size: 1.25rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.25rem; }
+  .person-title { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 1rem; }
+  .person-bio { font-size: 0.875rem; font-weight: 300; color: var(--mid-dark); line-height: 1.7; }
+
+  /* FORM */
+  .contact-form {}
+  .form-title { font-size: 1rem; font-weight: 600; margin-bottom: 1.75rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  label { display: block; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.5rem; }
+  input, textarea, select { width: 100%; padding: 0.75rem 1rem; background: var(--light); border: 1px solid var(--rule); border-radius: 2px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--ink); outline: none; transition: border-color 0.15s; }
+  input:focus, textarea:focus { border-color: var(--blue); }
+  textarea { resize: vertical; min-height: 120px; }
+  .form-submit { margin-top: 1.5rem; width: 100%; padding: 1rem; background: var(--ink); color: white; border: none; border-radius: 2px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.15s; }
+  .form-submit:hover { background: var(--blue); }
+  .form-note { font-size: 0.7rem; color: var(--mid); margin-top: 0.75rem; }
+
+  footer { border-top: 1px solid var(--rule); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .footer-copy { font-size: 0.75rem; color: var(--mid); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 3rem; padding: 3.5rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-wordmark.png" alt="Make Unit" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="immersive-experiences.html">Immersive</a></li>
+    <li><a href="content-development.html">Content</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="contact-wrap">
+  <div class="contact-left">
+    <p class="page-eyebrow">Get in touch</p>
+    <h1 class="page-title">Let's work<br>together.</h1>
+    <p class="contact-email-label">Email</p>
+    <a href="mailto:hello@makeunit.com" class="contact-email">hello@makeunit.com</a>
+
+    <div class="person-block">
+      <p class="person-label">Founder</p>
+      <h2 class="person-name">Ezequiel Asnaghi</h2>
+      <p class="person-title">Founder & Executive Producer</p>
+      <p class="person-bio">Ezequiel is an experienced producer and screenwriter with over two decades of expertise in the entertainment and creative industries — spanning VR, interactive installations, live events, film and content development.</p>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <p class="form-title">Send a message</p>
+    <form action="https://formspree.io/f/hello@makeunit.com" method="POST">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">What are you working on?</label>
+        <select id="subject" name="subject">
+          <option value="">Select a category</option>
+          <option value="immersive">Immersive Experience</option>
+          <option value="content">Content Development</option>
+          <option value="general">General Inquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message →</button>
+      <p class="form-note">Or email directly at hello@makeunit.com</p>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <span class="footer-copy">© 2026 Make Unit Inc.</span>
+</footer>
+
+</body>
+</html>
