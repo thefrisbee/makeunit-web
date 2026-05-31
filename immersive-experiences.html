@@ -29,17 +29,28 @@
 
   .project-featured { border-bottom: 1px solid var(--rule); padding: 4rem 0; }
 
-  .project-featured .feat-image { aspect-ratio: 16/7; overflow: hidden; background: var(--light); margin-bottom: 2rem; }
-  .project-featured .feat-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
-  .project-featured:hover .feat-image img { transform: scale(1.02); }
-
-  .project-featured .feat-meta { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start; }
+  .feat-meta { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start; }
   .feat-client { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); padding-top: 0.4rem; }
   .feat-title { font-size: clamp(1.75rem, 3vw, 2.75rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 0.75rem; }
   .feat-desc { font-size: 0.9rem; font-weight: 300; color: var(--mid-dark); line-height: 1.75; margin-bottom: 1.25rem; }
   .feat-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .feat-link { display: inline-block; margin-top: 1.25rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--ink); padding-bottom: 0.1rem; transition: color 0.15s, border-color 0.15s; }
   .feat-link:hover { color: var(--blue); border-color: var(--blue); }
+
+  /* ─── CAROUSEL ─── */
+  .carousel { position: relative; aspect-ratio: 16/7; overflow: hidden; background: var(--light); margin-bottom: 2rem; }
+  .carousel-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .carousel-slide { min-width: 100%; height: 100%; flex-shrink: 0; position: relative; }
+  .carousel-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .carousel-slide-video { position: relative; overflow: hidden; }
+  .carousel-slide-video iframe { position: absolute; width: 100%; height: calc(100% * 9 / 7); top: 50%; left: 0; transform: translateY(-50%); border: 0; }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: 1px solid var(--rule); color: var(--ink); font-size: 1.25rem; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: color 0.15s, background 0.15s; z-index: 2; }
+  .carousel-btn:hover { color: var(--blue); background: #fff; }
+  .carousel-prev { left: 1rem; }
+  .carousel-next { right: 1rem; }
+  .carousel-dots { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.4rem; z-index: 2; }
+  .carousel-dots .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer; padding: 0; transition: background 0.15s; }
+  .carousel-dots .dot.active { background: #fff; }
 
   /* ─── REGULAR GRID ─── */
   .projects-label { max-width: 1100px; margin: 0 auto; padding: 3.5rem 3rem 0; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
@@ -69,7 +80,7 @@
     nav { padding: 1rem 1.5rem; }
     .page-header { padding: 3.5rem 1.5rem 2.5rem; }
     .projects-featured, .projects-label, .projects { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .project-featured .feat-meta { grid-template-columns: 1fr; gap: 1rem; }
+    .feat-meta { grid-template-columns: 1fr; gap: 1rem; }
     .project, .project:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
     .project-info, .project:nth-child(even) .project-info { padding: 1.5rem 0 0; }
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -98,9 +109,35 @@
 <!-- ─── FEATURED ─── -->
 <div class="projects-featured">
 
+  <!-- 1. Objeto do Tempo -->
   <article class="project-featured">
-    <div class="feat-image">
-      <img src="assets/images/objeto-do-tempo.jpg" alt="Objeto do Tempo" loading="lazy">
+    <div class="carousel" id="c-objeto">
+      <div class="carousel-track">
+        <div class="carousel-slide carousel-slide-video">
+          <iframe src="https://www.youtube.com/embed/q5XrImcI40c?autoplay=1&mute=1&controls=0&loop=1&playlist=q5XrImcI40c" allow="autoplay; fullscreen" allowfullscreen title="Objeto do Tempo"></iframe>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/objetodotempo/objetodotempo_01.webp" alt="Objeto do Tempo" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/objetodotempo/objetodotempo_02.webp" alt="Objeto do Tempo" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/objetodotempo/objetodotempo_03.webp" alt="Objeto do Tempo" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/objetodotempo/objetodotempo_04.webp" alt="Objeto do Tempo" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/objetodotempo/objetodotempo_05.webp" alt="Objeto do Tempo" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/objetodotempo/objetodotempo_06.webp" alt="Objeto do Tempo" loading="lazy">
+        </div>
+      </div>
+      <button class="carousel-btn carousel-prev" aria-label="Previous">‹</button>
+      <button class="carousel-btn carousel-next" aria-label="Next">›</button>
+      <div class="carousel-dots"></div>
     </div>
     <div class="feat-meta">
       <p class="feat-client">Joao Wilbert · SESI Lab</p>
@@ -117,9 +154,17 @@
     </div>
   </article>
 
+  <!-- 2. Science Fiction -->
   <article class="project-featured">
-    <div class="feat-image">
-      <img src="assets/images/science-museum.jpg" alt="Science Fiction: Voyage to the Edge of Imagination" loading="lazy">
+    <div class="carousel" id="c-sciencefiction">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="assets/images/science-museum.jpg" alt="Science Fiction: Voyage to the Edge of Imagination" loading="lazy">
+        </div>
+      </div>
+      <button class="carousel-btn carousel-prev" aria-label="Previous">‹</button>
+      <button class="carousel-btn carousel-next" aria-label="Next">›</button>
+      <div class="carousel-dots"></div>
     </div>
     <div class="feat-meta">
       <p class="feat-client">Science Museum London</p>
@@ -136,9 +181,29 @@
     </div>
   </article>
 
+  <!-- 3. Summit at One Vanderbilt -->
   <article class="project-featured">
-    <div class="feat-image">
-      <img src="assets/images/summit-vanderbilt.jpg" alt="Summit at One Vanderbilt" loading="lazy">
+    <div class="carousel" id="c-summit">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="assets/images/summit-vanderbilt.jpg" alt="Summit at One Vanderbilt" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/onevanderbilt/skyline.webp" alt="Summit at One Vanderbilt — Skyline" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/onevanderbilt/clouds capture.webp" alt="Summit at One Vanderbilt — Clouds" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/onevanderbilt/testing_office.webp" alt="Summit at One Vanderbilt — Production" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/onevanderbilt/Gif_clouds.gif" alt="Summit at One Vanderbilt — Clouds animation" loading="lazy">
+        </div>
+      </div>
+      <button class="carousel-btn carousel-prev" aria-label="Previous">‹</button>
+      <button class="carousel-btn carousel-next" aria-label="Next">›</button>
+      <div class="carousel-dots"></div>
     </div>
     <div class="feat-meta">
       <p class="feat-client">Framestore NYC</p>
@@ -155,9 +220,32 @@
     </div>
   </article>
 
+  <!-- 4. Game of Thrones -->
   <article class="project-featured">
-    <div class="feat-image">
-      <img src="assets/images/got.jpg" alt="Game of Thrones VR" loading="lazy">
+    <div class="carousel" id="c-got">
+      <div class="carousel-track">
+        <div class="carousel-slide carousel-slide-video">
+          <iframe src="https://www.youtube.com/embed/_TdQkDnOUWw?autoplay=1&mute=1&controls=0&loop=1&playlist=_TdQkDnOUWw" allow="autoplay; fullscreen" allowfullscreen title="Game of Thrones: Beyond the Wall VR"></iframe>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/got/got_01.jpg" alt="Game of Thrones: Beyond the Wall" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/got/got_02.jpg" alt="Game of Thrones: Beyond the Wall" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/got/got_03.jpg" alt="Game of Thrones: Beyond the Wall" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/got/got_04.webp" alt="Game of Thrones: Beyond the Wall" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/got/got_05.webp" alt="Game of Thrones: Beyond the Wall" loading="lazy">
+        </div>
+      </div>
+      <button class="carousel-btn carousel-prev" aria-label="Previous">‹</button>
+      <button class="carousel-btn carousel-next" aria-label="Next">›</button>
+      <div class="carousel-dots"></div>
     </div>
     <div class="feat-meta">
       <p class="feat-client">Framestore</p>
@@ -174,9 +262,26 @@
     </div>
   </article>
 
+  <!-- 5. Capital One -->
   <article class="project-featured">
-    <div class="feat-image">
-      <img src="assets/images/capital-one-featured.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
+    <div class="carousel" id="c-capitalone">
+      <div class="carousel-track">
+        <div class="carousel-slide carousel-slide-video">
+          <iframe src="https://player.vimeo.com/video/783788030?autoplay=1&color=fff&title=0&byline=0&portrait=0&background=1" allow="autoplay; fullscreen" allowfullscreen title="Capital One Workplace Brand Visualizations"></iframe>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/capitalone/CapitalOne_Final_02_prod.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/capitalone/CapitalOne_Final_05_prod.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/capitalone/CapitalOne_Final_07_prod.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
+        </div>
+      </div>
+      <button class="carousel-btn carousel-prev" aria-label="Previous">‹</button>
+      <button class="carousel-btn carousel-next" aria-label="Next">›</button>
+      <div class="carousel-dots"></div>
     </div>
     <div class="feat-meta">
       <p class="feat-client">Capital One × HUSH</p>
@@ -193,9 +298,29 @@
     </div>
   </article>
 
+  <!-- 6. Inside Abbey Road -->
   <article class="project-featured">
-    <div class="feat-image">
-      <img src="assets/images/abbey-road-wide.jpg" alt="Inside Abbey Road" loading="lazy">
+    <div class="carousel" id="c-abbeyroad">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="assets/images/abbeyroad/abbeyroad_01.jpg" alt="Inside Abbey Road" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/abbeyroad/abbeyroad_04.jpg" alt="Inside Abbey Road — Studio interior" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/abbeyroad/abbeyroad_05.jpg" alt="Inside Abbey Road — Desktop experience" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/abbeyroad/abbeyroad_06.jpg" alt="Inside Abbey Road — Mobile experience" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/abbeyroad/abbeyroad_07.jpg" alt="Inside Abbey Road — On location" loading="lazy">
+        </div>
+      </div>
+      <button class="carousel-btn carousel-prev" aria-label="Previous">‹</button>
+      <button class="carousel-btn carousel-next" aria-label="Next">›</button>
+      <div class="carousel-dots"></div>
     </div>
     <div class="feat-meta">
       <p class="feat-client">Google Creative Lab</p>
@@ -337,6 +462,41 @@
   <span class="footer-copy">© 2026 Make Unit Inc.</span>
   <a href="mailto:hello@makeunit.com" class="footer-email">hello@makeunit.com</a>
 </footer>
+
+<script>
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+    const prevBtn = carousel.querySelector('.carousel-prev');
+    const nextBtn = carousel.querySelector('.carousel-next');
+
+    if (slides.length <= 1) {
+      prevBtn.style.display = 'none';
+      nextBtn.style.display = 'none';
+      return;
+    }
+
+    let current = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => go(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function go(n) {
+      current = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      carousel.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    prevBtn.addEventListener('click', () => go(current - 1));
+    nextBtn.addEventListener('click', () => go(current + 1));
+  });
+</script>
 
 </body>
 </html>
