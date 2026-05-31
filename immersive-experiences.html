@@ -25,20 +25,12 @@
   .page-sub { margin-top: 1rem; font-size: 1rem; font-weight: 300; color: var(--mid); max-width: 55ch; }
 
   /* ─── FEATURED ─── */
-  .projects-featured { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+  .projects-featured { /* intentionally no max-width — carousel goes full-bleed */ }
 
-  .project-featured { border-bottom: 1px solid var(--rule); padding: 4rem 0; }
+  .project-featured { border-bottom: 1px solid var(--rule); }
 
-  .feat-meta { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start; }
-  .feat-client { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); padding-top: 0.4rem; }
-  .feat-title { font-size: clamp(1.75rem, 3vw, 2.75rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 0.75rem; }
-  .feat-desc { font-size: 0.9rem; font-weight: 300; color: var(--mid-dark); line-height: 1.75; margin-bottom: 1.25rem; }
-  .feat-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .feat-link { display: inline-block; margin-top: 1.25rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--ink); padding-bottom: 0.1rem; transition: color 0.15s, border-color 0.15s; }
-  .feat-link:hover { color: var(--blue); border-color: var(--blue); }
-
-  /* ─── CAROUSEL ─── */
-  .carousel { position: relative; aspect-ratio: 16/7; overflow: hidden; background: var(--light); margin-bottom: 2rem; }
+  /* CAROUSEL — full-bleed on desktop */
+  .carousel { position: relative; aspect-ratio: 21/9; overflow: hidden; background: var(--light); }
   .carousel-track { display: flex; height: 100%; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
   .carousel-slide { min-width: 100%; height: 100%; flex-shrink: 0; position: relative; }
   .carousel-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -46,11 +38,20 @@
   .carousel-slide-video iframe { position: absolute; width: 100%; height: calc(100% * 9 / 7); top: 50%; left: 0; transform: translateY(-50%); border: 0; }
   .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: 1px solid var(--rule); color: var(--ink); font-size: 1.25rem; width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: color 0.15s, background 0.15s; z-index: 2; }
   .carousel-btn:hover { color: var(--blue); background: #fff; }
-  .carousel-prev { left: 1rem; }
-  .carousel-next { right: 1rem; }
-  .carousel-dots { position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.4rem; z-index: 2; }
+  .carousel-prev { left: 1.5rem; }
+  .carousel-next { right: 1.5rem; }
+  .carousel-dots { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.4rem; z-index: 2; }
   .carousel-dots .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer; padding: 0; transition: background 0.15s; }
   .carousel-dots .dot.active { background: #fff; }
+
+  /* FEAT META — contained */
+  .feat-meta { max-width: 1100px; margin: 0 auto; padding: 2.5rem 3rem 4rem; display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start; }
+  .feat-client { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); padding-top: 0.4rem; }
+  .feat-title { font-size: clamp(1.75rem, 3vw, 2.75rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 0.75rem; }
+  .feat-desc { font-size: 0.9rem; font-weight: 300; color: var(--mid-dark); line-height: 1.75; margin-bottom: 1.25rem; }
+  .feat-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .feat-link { display: inline-block; margin-top: 1.25rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--ink); padding-bottom: 0.1rem; transition: color 0.15s, border-color 0.15s; }
+  .feat-link:hover { color: var(--blue); border-color: var(--blue); }
 
   /* ─── REGULAR GRID ─── */
   .projects-label { max-width: 1100px; margin: 0 auto; padding: 3.5rem 3rem 0; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
@@ -79,8 +80,10 @@
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .page-header { padding: 3.5rem 1.5rem 2.5rem; }
-    .projects-featured, .projects-label, .projects { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .feat-meta { grid-template-columns: 1fr; gap: 1rem; }
+    .carousel { aspect-ratio: 16/9; }
+    .feat-meta { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 1.5rem 3rem; }
+    .projects-label { padding: 3rem 1.5rem 0; }
+    .projects { padding: 0 1.5rem 4rem; }
     .project, .project:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
     .project-info, .project:nth-child(even) .project-info { padding: 1.5rem 0 0; }
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -270,7 +273,16 @@
           <iframe src="https://player.vimeo.com/video/783788030?autoplay=1&color=fff&title=0&byline=0&portrait=0&background=1" allow="autoplay; fullscreen" allowfullscreen title="Capital One Workplace Brand Visualizations"></iframe>
         </div>
         <div class="carousel-slide">
+          <img src="assets/images/capitalone/CapitalOne_Final_01.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
+        </div>
+        <div class="carousel-slide">
           <img src="assets/images/capitalone/CapitalOne_Final_02_prod.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/capitalone/CapitalOne_Final_03.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/images/capitalone/CapitalOne_Final_04.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
         </div>
         <div class="carousel-slide">
           <img src="assets/images/capitalone/CapitalOne_Final_05_prod.jpg" alt="Capital One Workplace Brand Visualizations" loading="lazy">
@@ -392,17 +404,49 @@
   </article>
 
   <article class="project">
-    <div class="project-image" style="background: var(--light); display:flex; align-items:center; justify-content:center; min-height: 260px;">
-      <span style="font-size: 0.75rem; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase;">Jackie Robinson · Google</span>
+    <div class="project-image">
+      <img src="assets/images/cadillac/cadillac_01.jpg" alt="Cadillac in Virtual Reality" loading="lazy">
+    </div>
+    <div class="project-info">
+      <p class="project-client">Cadillac × Publicis NA</p>
+      <h2 class="project-title">Cadillac in Virtual Reality</h2>
+      <p class="project-desc">A VR car configurator experience for Cadillac dealerships across the United States. Shot on location in New York using 360 photography, the experience placed customers inside the vehicle in a cinematic nighttime environment — produced with Publicis NA and All Things Media.</p>
+      <div class="project-tags">
+        <span class="tag">VR</span>
+        <span class="tag">360 Photography</span>
+        <span class="tag">Automotive</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-image">
+      <img src="assets/images/jackierobinson/jackierobinson_01.jpg" alt="Jackie Robinson VR — Google Expeditions" loading="lazy">
     </div>
     <div class="project-info">
       <p class="project-client">Google Creative Lab</p>
       <h2 class="project-title">Jackie Robinson VR — Google Expeditions</h2>
-      <p class="project-desc">Make Unit helped Google Creative Lab develop the Jackie Robinson VR experience for the Google Expeditions platform, in collaboration with Ken Burns and his documentary. The team built the experience with art directors, copywriters, 3D artists and engineers.</p>
+      <p class="project-desc">Make Unit helped Google Creative Lab develop the Jackie Robinson VR experience for the Google Expeditions platform, in collaboration with Ken Burns and his documentary. The team built the experience with art directors, copywriters, 3D artists and engineers. Featured in Daily News, NBC News and Yahoo Sports.</p>
       <div class="project-tags">
         <span class="tag">VR</span>
         <span class="tag">Education</span>
         <span class="tag">Google Cardboard</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="project">
+    <div class="project-image">
+      <img src="assets/images/ucb/ucb_01.jpg" alt="UCB Chelsea — 360 Capture" loading="lazy">
+    </div>
+    <div class="project-info">
+      <p class="project-client">Upright Citizens Brigade</p>
+      <h2 class="project-title">UCB Chelsea — 360 Capture</h2>
+      <p class="project-desc">360 capture of the legendary Upright Citizens Brigade theatre in Chelsea before its closure — preserving the historic comedy venue in immersive photography for posterity.</p>
+      <div class="project-tags">
+        <span class="tag">360 Photography</span>
+        <span class="tag">Preservation</span>
+        <span class="tag">New York</span>
       </div>
     </div>
   </article>
