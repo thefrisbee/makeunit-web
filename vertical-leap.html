@@ -26,9 +26,20 @@
   .hero-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; line-height: 1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
   .hero-title em { font-style: normal; color: var(--blue); }
   .hero-subtitle { font-size: 1rem; font-weight: 400; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
-  .hero-desc { font-size: 1.15rem; font-weight: 300; color: var(--mid-dark); max-width: 56ch; line-height: 1.75; margin-bottom: 3rem; }
+  .hero-desc { font-size: 1.1rem; font-weight: 300; color: var(--mid-dark); max-width: 56ch; line-height: 1.75; margin-bottom: 3rem; }
   .hero-cta { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--ink); color: var(--bg); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.15s; }
   .hero-cta:hover { background: var(--blue); }
+
+  /* TWO-UP SECTIONS (The Shift / The Opportunity) */
+  .two-up { display: grid; grid-template-columns: 1fr 1fr; }
+  .two-up-item { padding: 4rem 3rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .two-up-item:last-child { border-right: none; }
+  .two-up-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; }
+  .two-up-title { font-size: clamp(1.5rem, 2.5vw, 2.25rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 1.25rem; }
+  .two-up-points { list-style: none; }
+  .two-up-points li { font-size: 0.95rem; font-weight: 300; color: var(--mid-dark); padding: 0.6rem 0; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 0.75rem; }
+  .two-up-points li:last-child { border-bottom: none; }
+  .two-up-points li::before { content: ''; width: 6px; height: 6px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
 
   /* STATS */
   .stats { background: var(--ink); color: #fff; }
@@ -37,40 +48,52 @@
   .stat-num { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.03em; color: var(--blue); line-height: 1; margin-bottom: 0.5rem; }
   .stat-label { font-size: 0.75rem; font-weight: 400; color: rgba(255,255,255,0.6); line-height: 1.5; }
 
-  /* SECTION */
-  .section { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; border-bottom: 1px solid var(--rule); }
-  .section-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.5rem; }
-  .section-title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
-  .section-body { font-size: 1rem; font-weight: 300; color: var(--mid-dark); line-height: 1.8; max-width: 60ch; }
-  .section-body strong { font-weight: 600; color: var(--ink); }
+  /* LATINX ADVANTAGE */
+  .latinx { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .latinx-text .section-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; }
+  .latinx-text h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.25rem; }
+  .latinx-text p { font-size: 0.95rem; font-weight: 300; color: var(--mid-dark); line-height: 1.8; }
+  .latinx-img { width: 100%; display: block; }
+
+  /* NEW ECONOMICS */
+  .economics { background: var(--light); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .economics-inner { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; }
+  .economics-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; }
+  .economics-title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 3rem; }
+  .economics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .economics-item { background: var(--bg); padding: 2rem; border: 1px solid var(--rule); }
+  .economics-item p { font-size: 0.9rem; font-weight: 300; color: var(--mid-dark); line-height: 1.7; }
+  .economics-item strong { font-weight: 600; color: var(--ink); display: block; margin-bottom: 0.4rem; }
 
   /* CURRICULUM */
   .curriculum-section { background: var(--blue); color: #fff; }
-  .curriculum-section .section-eyebrow { color: rgba(255,255,255,0.6); }
-  .curriculum-section .section-title { color: #fff; }
-  .curriculum-section .section-body { color: rgba(255,255,255,0.8); }
-  .curriculum { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 3rem; }
+  .curriculum-inner { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; }
+  .curriculum-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 1.25rem; }
+  .curriculum-title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 3rem; color: #fff; }
+  .curriculum { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
   .curriculum-item { background: rgba(255,255,255,0.1); padding: 2rem; }
   .curriculum-num { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
-  .curriculum-title { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.75rem; color: #fff; }
+  .curriculum-title-item { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.75rem; color: #fff; }
   .curriculum-list { list-style: none; }
   .curriculum-list li { font-size: 0.875rem; font-weight: 300; color: rgba(255,255,255,0.75); padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; gap: 0.75rem; }
   .curriculum-list li:last-child { border-bottom: none; }
   .curriculum-list li::before { content: ''; width: 5px; height: 5px; background: #fff; border-radius: 50%; flex-shrink: 0; }
 
   /* SPEAKERS */
-  .speakers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 3rem; }
+  .speakers-section { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; border-bottom: 1px solid var(--rule); }
+  .section-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; }
+  .section-title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 3rem; }
+  .speakers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
   .speaker { display: flex; flex-direction: column; }
   .speaker-photo { width: 100%; aspect-ratio: 9/16; object-fit: cover; object-position: center top; display: block; filter: grayscale(100%); margin-bottom: 1.25rem; transition: filter 0.3s; }
   .speaker-photo:hover { filter: grayscale(0%); }
   .speaker-photo.pos-right { object-position: right top; }
-  .speaker-photo-placeholder { width: 100%; aspect-ratio: 9/16; background: var(--light); display: block; margin-bottom: 1.25rem; }
   .speaker-info { padding: 0 0.5rem 1.5rem; }
   .speaker-name { font-size: 1rem; font-weight: 900; letter-spacing: -0.01em; margin-bottom: 0.2rem; }
   .speaker-role { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
   .speaker-bio { font-size: 0.8rem; font-weight: 300; color: var(--mid-dark); line-height: 1.6; }
 
-  /* CTA SECTION */
+  /* CTA */
   .cta-section { max-width: 900px; margin: 0 auto; padding: 6rem 3rem; text-align: center; }
   .cta-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin-bottom: 1.5rem; }
   .cta-body { font-size: 1rem; font-weight: 300; color: var(--mid-dark); margin-bottom: 2.5rem; }
@@ -84,9 +107,15 @@
     nav { padding: 0.75rem 1rem; }
     .nav-logo img { height: 18px; }
     .hero { padding: 4rem 1.5rem 3.5rem; }
+    .two-up { grid-template-columns: 1fr; }
+    .two-up-item { border-right: none; }
     .stats-inner { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
-    .section { padding: 3.5rem 1.5rem; }
+    .latinx { grid-template-columns: 1fr; padding: 3.5rem 1.5rem; gap: 2rem; }
+    .economics-inner { padding: 3.5rem 1.5rem; }
+    .economics-grid { grid-template-columns: 1fr; }
+    .curriculum-inner { padding: 3.5rem 1.5rem; }
     .curriculum { grid-template-columns: 1fr; }
+    .speakers-section { padding: 3.5rem 1.5rem; }
     .speakers { grid-template-columns: repeat(2, 1fr); }
     .cta-section { padding: 4rem 1.5rem; }
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -103,19 +132,44 @@
 
 <main>
 
+  <!-- HERO -->
   <section class="hero">
     <p class="hero-eyebrow">Make Unit Education</p>
     <h1 class="hero-title">The <em>Vertical</em> Leap</h1>
     <p class="hero-subtitle">Writing · Production · AI · Real-Time · Growth</p>
-    <p class="hero-desc">Becoming a full-stack filmmaker for vertical drama. The industry has moved vertical — shorter formats, faster interaction, AI acceleration throughout the pipeline. This is how you get ahead of it.</p>
+    <p class="hero-desc">Becoming a full-stack filmmaker for vertical drama. The industry has moved vertical — and it's not coming back.</p>
     <a href="#contact" class="hero-cta">Get in touch →&#xFE0E;</a>
   </section>
 
+  <!-- THE SHIFT + THE OPPORTUNITY -->
+  <div class="two-up">
+    <div class="two-up-item">
+      <p class="two-up-eyebrow">The Shift</p>
+      <h2 class="two-up-title">The industry has moved vertical.</h2>
+      <ul class="two-up-points">
+        <li>Shorter formats</li>
+        <li>Faster interaction</li>
+        <li>AI accelerates the entire pipeline</li>
+      </ul>
+    </div>
+    <div class="two-up-item">
+      <p class="two-up-eyebrow">The Opportunity</p>
+      <h2 class="two-up-title">A vertical series is a lab for IP.</h2>
+      <ul class="two-up-points">
+        <li>Low cost</li>
+        <li>Fast testing</li>
+        <li>Instant audience feedback</li>
+        <li>The most successful genre is some version of <strong>telenovelas</strong> — a language with a long tradition in the Latin community</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STATS -->
   <div class="stats">
     <div class="stats-inner">
       <div class="stat">
         <p class="stat-num">$8.4B</p>
-        <p class="stat-label">Global vertical drama market by 2031 (from $4.17B in 2024)</p>
+        <p class="stat-label">Global vertical drama market by 2031 — from $4.17B in 2024</p>
       </div>
       <div class="stat">
         <p class="stat-num">45min</p>
@@ -123,61 +177,93 @@
       </div>
       <div class="stat">
         <p class="stat-num">40M+</p>
-        <p class="stat-label">Users on dedicated vertical drama platforms globally</p>
+        <p class="stat-label">Users on dedicated vertical drama platforms globally, with 1M+ monthly installs</p>
       </div>
     </div>
   </div>
 
-  <section class="section">
-    <p class="section-eyebrow">The Opportunity</p>
-    <h2 class="section-title">Vertical drama is the new IP laboratory.</h2>
-    <p class="section-body">Low cost, fast testing, immediate audience feedback. A vertical series lets you build a world, find your audience, and prove your concept before committing to a full production. <strong>The most successful genre is some version of telenovelas</strong> — a language with a long-standing tradition in the Latin community, now exploding globally through mobile-first platforms.<br><br>Disney+ announced mobile vertical video integration at CES 2026. The window is open.</p>
-  </section>
+  <!-- LATINX ADVANTAGE -->
+  <div class="latinx">
+    <div class="latinx-text">
+      <p class="section-eyebrow">Latinx Advantage</p>
+      <h2>A genre we already know how to tell.</h2>
+      <p>Telenovelas aren't new to the Latin community — they're a decades-long tradition of serialized drama, emotional hooks, and mass audience engagement. Vertical drama is the same language, on a new screen. That's a head start.</p>
+    </div>
+    <img src="assets/images/verticalleap/latinx-advantage.png" alt="Latinx Advantage" class="latinx-img">
+  </div>
 
-  <section class="section curriculum-section">
-    <p class="section-eyebrow">Curriculum</p>
-    <h2 class="section-title">Four pillars. One complete pipeline.</h2>
-    <div class="curriculum">
-      <div class="curriculum-item">
-        <p class="curriculum-num">01</p>
-        <h3 class="curriculum-title">Writing</h3>
-        <ul class="curriculum-list">
-          <li>Vertical drama structure</li>
-          <li>Hooks & super hooks</li>
-          <li>Melodrama techniques</li>
-        </ul>
-      </div>
-      <div class="curriculum-item">
-        <p class="curriculum-num">02</p>
-        <h3 class="curriculum-title">Producing</h3>
-        <ul class="curriculum-list">
-          <li>The production cycle</li>
-          <li>Full-stack toolkit</li>
-          <li>Vertical budgets</li>
-        </ul>
-      </div>
-      <div class="curriculum-item">
-        <p class="curriculum-num">03</p>
-        <h3 class="curriculum-title">Brand Building</h3>
-        <ul class="curriculum-list">
-          <li>Brand development</li>
-          <li>Audience acquisition</li>
-          <li>Extended universe</li>
-        </ul>
-      </div>
-      <div class="curriculum-item">
-        <p class="curriculum-num">04</p>
-        <h3 class="curriculum-title">AI Collaboration</h3>
-        <ul class="curriculum-list">
-          <li>Pitch decks & story expansion</li>
-          <li>Teaser production</li>
-          <li>AI-driven marketing plans</li>
-        </ul>
+  <!-- NEW ECONOMICS -->
+  <div class="economics">
+    <div class="economics-inner">
+      <p class="economics-eyebrow">Why Vertical Drama</p>
+      <h2 class="economics-title">New economics. Legacy media is leaning in.</h2>
+      <div class="economics-grid">
+        <div class="economics-item">
+          <p><strong>Freemium & micro-payments</strong>Serialized short dramas are monetized through freemium, subscription, and micro-payment models — creating new revenue streams outside traditional distribution.</p>
+        </div>
+        <div class="economics-item">
+          <p><strong>AI-tested concepts</strong>Platforms are increasingly using AI tools to test story concepts and predict engagement before committing to full production.</p>
+        </div>
+        <div class="economics-item">
+          <p><strong>Proof-of-concept pipeline</strong>Traditional TV and film producers are exploring verticals as proof-of-concept pipelines before scaling to longer formats.</p>
+        </div>
+        <div class="economics-item">
+          <p><strong>Disney+ goes vertical</strong>At CES 2026, Disney+ announced mobile-oriented vertical video integration — a signal that legacy media is now following the format.</p>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section">
+  <!-- CURRICULUM -->
+  <div class="curriculum-section">
+    <div class="curriculum-inner">
+      <p class="curriculum-eyebrow">Curriculum</p>
+      <h2 class="curriculum-title">Full Stack Filmmaker. Four pillars.</h2>
+      <div class="curriculum">
+        <div class="curriculum-item">
+          <p class="curriculum-num">01</p>
+          <h3 class="curriculum-title-item">Writing</h3>
+          <ul class="curriculum-list">
+            <li>Writing for vertical drama</li>
+            <li>Hooks and super hooks</li>
+            <li>Melodrama, melodrama and… melodrama</li>
+          </ul>
+        </div>
+        <div class="curriculum-item">
+          <p class="curriculum-num">02</p>
+          <h3 class="curriculum-title-item">Producing</h3>
+          <ul class="curriculum-list">
+            <li>The vertical production cycle</li>
+            <li>The toolkit</li>
+            <li>Full stack budgets</li>
+          </ul>
+        </div>
+        <div class="curriculum-item">
+          <p class="curriculum-num">03</p>
+          <h3 class="curriculum-title-item">Brand Building & Growth</h3>
+          <ul class="curriculum-list">
+            <li>Build your brand</li>
+            <li>Getting those eyeballs</li>
+            <li>The full stack marketeer</li>
+            <li>Extended universe</li>
+          </ul>
+        </div>
+        <div class="curriculum-item">
+          <p class="curriculum-num">04</p>
+          <h3 class="curriculum-title-item">AI Collaboration</h3>
+          <ul class="curriculum-list">
+            <li>Build me a pitch deck</li>
+            <li>Expand a story</li>
+            <li>Build a teaser</li>
+            <li>Build a marketing plan</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEAKERS -->
+  <section class="speakers-section">
     <p class="section-eyebrow">Instructors</p>
     <h2 class="section-title">Industry practitioners, not academics.</h2>
     <div class="speakers">
@@ -186,7 +272,7 @@
         <div class="speaker-info">
           <p class="speaker-name">Luz Orlando Brennan</p>
           <p class="speaker-role">Director · Writer · Producer</p>
-          <p class="speaker-bio">Award-winning filmmaker. <em>La Estrella que Perdí</em> — Best Feature, Cine Las Américas 2025. Credits: <em>El Prófugo</em> (Berlinale), <em>Dior</em> (Annecy). ENERC and UBA.</p>
+          <p class="speaker-bio">Argentina-based award-winning filmmaker. <em>La Estrella que Perdí</em> — Best Feature, Cine Las Américas 2025. <em>El Prófugo</em> (Berlinale), <em>Dior</em> (Annecy), Premio Madrid Film Office · MIANIMA 2025. ENERC and UBA.</p>
         </div>
       </div>
       <div class="speaker">
@@ -194,7 +280,7 @@
         <div class="speaker-info">
           <p class="speaker-name">Ezequiel Asnaghi</p>
           <p class="speaker-role">Producer · Writer · Actor</p>
-          <p class="speaker-bio">Founder of Make Unit. 20+ years in entertainment. <em>Game of Thrones VR</em> (HBO/Framestore, Emmy-nominated), Science Museum London, Google Creative Lab.</p>
+          <p class="speaker-bio">Founder of Make Unit. 20+ years across the US, Europe, Asia, and Latin America. <em>Game of Thrones VR</em> (HBO/Framestore, Emmy-nominated), Science Museum London, Objeto do Tempo (SESI), Google Creative Lab.</p>
         </div>
       </div>
       <div class="speaker">
@@ -202,7 +288,7 @@
         <div class="speaker-info">
           <p class="speaker-name">Matthias Metternich</p>
           <p class="speaker-role">Brand Builder</p>
-          <p class="speaker-bio">Former CEO of Kiala (top greens brand on TikTok & Amazon). Co-founded Art of Sport with Kobe Bryant. Algorithms, influencers, affiliates, retail scaling.</p>
+          <p class="speaker-bio">CEO of Kiala (#1 greens brand on TikTok & Amazon). Co-founded Art of Sport with Kobe Bryant — scaled to 30,000 retail doors through 500+ influencers. Full-stack growth: algorithm, affiliates, retail, community.</p>
         </div>
       </div>
       <div class="speaker">
@@ -210,12 +296,13 @@
         <div class="speaker-info">
           <p class="speaker-name">Carina Haller</p>
           <p class="speaker-role">Global Marketing Specialist</p>
-          <p class="speaker-bio">Co-producer, LA Brazilian Film Festival (18 seasons). Warner Bros.: Barbie, Dune, Minecraft. World of Warcraft, Pac-Man.</p>
+          <p class="speaker-bio">Co-producer, LA Brazilian Film Festival (18 seasons). Warner Bros.: Barbie, Dune, Minecraft. Video game campaigns: World of Warcraft, Pac-Man.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CTA -->
   <section class="cta-section" id="contact">
     <h2 class="cta-title">Ready to make the leap?</h2>
     <p class="cta-body">Get in touch to learn about the next cohort, pricing, and dates.</p>
