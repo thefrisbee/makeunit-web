@@ -24,62 +24,46 @@
   .page-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
   .page-sub { margin-top: 1rem; font-size: 1rem; font-weight: 300; color: var(--mid); max-width: 55ch; }
 
-  /* ─── FEATURED PROJECTS ─── */
-  .projects-featured { /* no max-width — hero goes full-bleed */ }
-  .project-featured { border-bottom: 1px solid var(--rule); padding-bottom: 5rem; }
+  /* ─── PROJECT BLOCK (shared by featured + secondary) ─── */
+  .project-block { border-bottom: 1px solid var(--rule); padding-bottom: 5rem; }
+  .project-block.secondary { padding-bottom: 4rem; }
 
-  /* HERO — full-bleed 16:9 */
+  /* HERO */
   .project-hero { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--light); }
   .project-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
   .project-hero iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-  /* META — contained */
-  .feat-meta { max-width: 1100px; margin: 0 auto; padding: 2.5rem 3rem 2rem; display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start; }
-  .feat-client { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); padding-top: 0.4rem; }
-  .feat-role { font-size: 0.65rem; font-weight: 400; color: var(--mid); margin-top: 0.3rem; letter-spacing: 0.04em; }
-  .feat-title { font-size: clamp(1.75rem, 3vw, 2.75rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 0.75rem; }
-  .feat-desc { font-size: 0.9rem; font-weight: 300; color: var(--mid-dark); line-height: 1.75; margin-bottom: 1.25rem; }
-  .feat-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  /* META */
+  .project-meta { max-width: 1100px; margin: 0 auto; padding: 2.5rem 3rem 2rem; display: grid; gap: 3rem; align-items: start; }
+  .project-meta.featured { grid-template-columns: 220px 1fr; }
+  .project-meta.secondary { grid-template-columns: 160px 1fr; }
+  .meta-client { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); padding-top: 0.4rem; }
+  .meta-role { font-size: 0.65rem; font-weight: 400; color: var(--mid); margin-top: 0.3rem; letter-spacing: 0.04em; }
+  .meta-title { font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 0.75rem; }
+  .project-meta.featured .meta-title { font-size: clamp(1.75rem, 3vw, 2.75rem); }
+  .project-meta.secondary .meta-title { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+  .meta-desc { font-size: 0.9rem; font-weight: 300; color: var(--mid-dark); line-height: 1.75; margin-bottom: 1.25rem; }
+  .meta-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border: 1px solid var(--rule); border-radius: 2px; color: var(--mid); }
-  .feat-link { display: inline-block; margin-top: 1.25rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--ink); padding-bottom: 0.1rem; transition: color 0.15s, border-color 0.15s; }
-  .feat-link:hover { color: var(--blue); border-color: var(--blue); }
+  .meta-link { display: inline-block; margin-top: 1.25rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--ink); padding-bottom: 0.1rem; transition: color 0.15s, border-color 0.15s; }
+  .meta-link:hover { color: var(--blue); border-color: var(--blue); }
 
   /* MOSAIC */
   .mosaic { max-width: 1100px; margin: 0 auto; padding: 0 3rem; display: grid; gap: 4px; }
   .mosaic-3 { grid-template-columns: repeat(3, 1fr); }
   .mosaic-4 { grid-template-columns: repeat(4, 1fr); }
+  .mosaic-2 { grid-template-columns: repeat(2, 1fr); }
   .mosaic-item { overflow: hidden; background: var(--light); }
   .mosaic-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; aspect-ratio: 4/3; }
   .mosaic-item:hover img { transform: scale(1.03); }
   .mosaic-item.wide { grid-column: span 2; }
   .mosaic-item.wide img { aspect-ratio: 8/3; }
-  .mosaic-item.tall { grid-row: span 2; }
-  .mosaic-item.tall img { aspect-ratio: 4/6; height: 100%; }
-
-  /* VIDEO in mosaic */
   .mosaic-item.video { position: relative; aspect-ratio: 16/9; }
   .mosaic-item.video.wide { aspect-ratio: 16/4.5; }
   .mosaic-item.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-  /* ─── REGULAR GRID ─── */
-  .projects-label { max-width: 1100px; margin: 0 auto; padding: 5rem 3rem 0; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); }
-  .projects { max-width: 1100px; margin: 0 auto; padding: 0 3rem 6rem; }
-
-  .project { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid var(--rule); padding: 3.5rem 0; align-items: start; }
-  .project-media { overflow: hidden; background: var(--light); }
-  .project-media img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; transition: transform 0.4s ease; }
-  .project:hover .project-media img { transform: scale(1.03); }
-  .project-media-video { position: relative; aspect-ratio: 16/9; }
-  .project-media-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .project-info { padding: 0 0 0 3rem; }
-  .project-client { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
-  .project-title { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
-  .project-desc { font-size: 0.875rem; font-weight: 300; color: var(--mid-dark); line-height: 1.7; margin-bottom: 1.5rem; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
-  .project:nth-child(even) { direction: rtl; }
-  .project:nth-child(even) > * { direction: ltr; }
-  .project:nth-child(even) .project-info { padding: 0 3rem 0 0; }
+  /* DIVIDER LABEL */
+  .section-divider { max-width: 1100px; margin: 0 auto; padding: 4rem 3rem 0; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); border-top: 1px solid var(--rule); }
 
   footer { border-top: 1px solid var(--rule); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
   .footer-copy { font-size: 0.75rem; color: var(--mid); }
@@ -89,17 +73,14 @@
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .page-header { padding: 3.5rem 1.5rem 2.5rem; }
-    .feat-meta { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 1.5rem 1.5rem; }
+    .project-meta.featured, .project-meta.secondary { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 1.5rem 1.5rem; }
     .mosaic { padding: 0 1.5rem; }
     .mosaic-3, .mosaic-4 { grid-template-columns: repeat(2, 1fr); }
+    .mosaic-2 { grid-template-columns: 1fr; }
     .mosaic-item.wide { grid-column: span 1; }
     .mosaic-item.wide img { aspect-ratio: 4/3; }
-    .mosaic-item.tall { grid-row: span 1; }
-    .mosaic-item.tall img { aspect-ratio: 4/3; height: auto; }
-    .projects-label { padding: 3rem 1.5rem 0; }
-    .projects { padding: 0 1.5rem 4rem; }
-    .project, .project:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
-    .project-info, .project:nth-child(even) .project-info { padding: 1.5rem 0 0; }
+    .mosaic-item.video.wide { aspect-ratio: 16/9; }
+    .section-divider { padding: 3rem 1.5rem 0; }
     footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -123,316 +104,374 @@
   <p class="page-sub">VR, AR, large-scale installations and interactive productions — from brief to delivery.</p>
 </header>
 
-<div class="projects-featured">
+<!-- ═══════════════ FEATURED ═══════════════ -->
 
-  <!-- 1. Objeto do Tempo -->
-  <article class="project-featured">
-    <div class="project-hero">
-      <iframe src="https://www.youtube.com/embed/q5XrImcI40c?autoplay=1&mute=1&controls=0&loop=1&playlist=q5XrImcI40c" allow="autoplay; fullscreen" allowfullscreen title="Objeto do Tempo"></iframe>
+<!-- 1. Objeto do Tempo -->
+<article class="project-block">
+  <div class="project-hero">
+    <iframe src="https://www.youtube.com/embed/q5XrImcI40c?autoplay=1&mute=1&controls=0&loop=1&playlist=q5XrImcI40c" allow="autoplay; fullscreen" allowfullscreen title="Objeto do Tempo"></iframe>
+  </div>
+  <div class="project-meta featured">
+    <div>
+      <p class="meta-client">Joao Wilbert · SESI Lab</p>
+      <p class="meta-role">Executive Project Manager</p>
     </div>
-    <div class="feat-meta">
-      <div>
-        <p class="feat-client">Joao Wilbert · SESI Lab</p>
-        <p class="feat-role">Executive Project Manager</p>
-      </div>
-      <div>
-        <h2 class="feat-title">Objeto do Tempo</h2>
-        <p class="feat-desc">Project management for a large-scale participatory installation by artist Joao Wilbert, currently at SESI Lab in Brasília. The work draws on responses from people across Brazil about the passing of time — translating them into incidental sounds, rhythms and visual columns that mark the succession of voices. Coordination spanned teams in London, San Francisco, China, Brazil and Argentina.</p>
-        <div class="feat-tags">
-          <span class="tag">Installation</span>
-          <span class="tag">Interactive</span>
-          <span class="tag">Brasília</span>
-        </div>
-        <a href="http://objetodotempo.art/" class="feat-link" target="_blank" rel="noopener">View project →</a>
-      </div>
+    <div>
+      <h2 class="meta-title">Objeto do Tempo</h2>
+      <p class="meta-desc">Project management for a large-scale participatory installation by artist Joao Wilbert, currently at SESI Lab in Brasília. The work draws on responses from people across Brazil about the passing of time — translating them into incidental sounds, rhythms and visual columns that mark the succession of voices. Coordination spanned teams in London, San Francisco, China, Brazil and Argentina.</p>
+      <div class="meta-tags"><span class="tag">Installation</span><span class="tag">Interactive</span><span class="tag">Brasília</span></div>
+      <a href="http://objetodotempo.art/" class="meta-link" target="_blank" rel="noopener">View project →</a>
     </div>
-    <div class="mosaic mosaic-3">
-      <div class="mosaic-item wide"><img src="assets/images/objetodotempo/objetodotempo_01.webp" alt="Objeto do Tempo" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/objetodotempo/objetodotempo_02.webp" alt="Objeto do Tempo" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/objetodotempo/objetodotempo_03.webp" alt="Objeto do Tempo" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/objetodotempo/objetodotempo_04.webp" alt="Objeto do Tempo" loading="lazy"></div>
-      <div class="mosaic-item wide"><img src="assets/images/objetodotempo/objetodotempo_05.webp" alt="Objeto do Tempo" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/objetodotempo/objetodotempo_06.webp" alt="Objeto do Tempo" loading="lazy"></div>
-    </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-3">
+    <div class="mosaic-item wide"><img src="assets/images/objetodotempo/objetodotempo_01.webp" alt="Objeto do Tempo" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/objetodotempo/objetodotempo_02.webp" alt="Objeto do Tempo" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/objetodotempo/objetodotempo_03.webp" alt="Objeto do Tempo" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/objetodotempo/objetodotempo_04.webp" alt="Objeto do Tempo" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/onevanderbilt-sq/ov_01.jpg" alt="Objeto do Tempo — Installation" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_02.jpg" alt="Objeto do Tempo — Installation" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_03.jpg" alt="Objeto do Tempo — Installation" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/objetodotempo/objetodotempo_05.webp" alt="Objeto do Tempo" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/objetodotempo/objetodotempo_06.webp" alt="Objeto do Tempo" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_04.jpg" alt="Objeto do Tempo — Installation" loading="lazy"></div>
+  </div>
+</article>
 
-  <!-- 2. Science Fiction -->
-  <article class="project-featured">
-    <div class="project-hero">
-      <iframe src="https://www.youtube.com/embed/9ff00wbQ66Y?autoplay=1&mute=1&controls=0&loop=1&playlist=9ff00wbQ66Y" allow="autoplay; fullscreen" allowfullscreen title="Science Fiction: Voyage to the Edge of Imagination"></iframe>
+<!-- 2. Science Fiction -->
+<article class="project-block">
+  <div class="project-hero">
+    <iframe src="https://www.youtube.com/embed/9ff00wbQ66Y?autoplay=1&mute=1&controls=0&loop=1&playlist=9ff00wbQ66Y" allow="autoplay; fullscreen" allowfullscreen title="Science Fiction: Voyage to the Edge of Imagination"></iframe>
+  </div>
+  <div class="project-meta featured">
+    <div>
+      <p class="meta-client">Science Museum London</p>
+      <p class="meta-role">Senior Content Producer</p>
     </div>
-    <div class="feat-meta">
-      <div>
-        <p class="feat-client">Science Museum London</p>
-        <p class="feat-role">Senior Content Producer</p>
-      </div>
-      <div>
-        <h2 class="feat-title">Science Fiction: Voyage to the Edge of Imagination</h2>
-        <p class="feat-desc">Video and soundscape content production for one of the Science Museum London's most ambitious exhibitions — an immersive journey through science fiction's relationship with real science, spanning props, environments and original AV content.</p>
-        <div class="feat-tags">
-          <span class="tag">Exhibition</span>
-          <span class="tag">Video</span>
-          <span class="tag">Soundscape</span>
-        </div>
-        <a href="https://www.sciencemuseum.org.uk/see-and-do/science-fiction" class="feat-link" target="_blank" rel="noopener">View project →</a>
-      </div>
+    <div>
+      <h2 class="meta-title">Science Fiction: Voyage to the Edge of Imagination</h2>
+      <p class="meta-desc">Video and soundscape content production for one of the Science Museum London's most ambitious exhibitions — an immersive journey through science fiction's relationship with real science, spanning props, environments and original AV content.</p>
+      <div class="meta-tags"><span class="tag">Exhibition</span><span class="tag">Video</span><span class="tag">Soundscape</span></div>
+      <a href="https://www.sciencemuseum.org.uk/see-and-do/science-fiction" class="meta-link" target="_blank" rel="noopener">View project →</a>
     </div>
-    <div class="mosaic mosaic-3">
-      <div class="mosaic-item wide"><img src="assets/images/science-museum.jpg" alt="Science Fiction" loading="lazy"></div>
-    </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-2">
+    <div class="mosaic-item wide"><img src="assets/images/science-museum.jpg" alt="Science Fiction" loading="lazy"></div>
+  </div>
+</article>
 
-  <!-- 3. Summit at One Vanderbilt -->
-  <article class="project-featured">
-    <div class="project-hero">
-      <img src="assets/images/onevanderbilt-sq/ov_01.jpg" alt="Summit at One Vanderbilt">
+<!-- 3. Summit at One Vanderbilt -->
+<article class="project-block">
+  <div class="project-hero">
+    <img src="assets/images/summit-vanderbilt.jpg" alt="Summit at One Vanderbilt">
+  </div>
+  <div class="project-meta featured">
+    <div>
+      <p class="meta-client">Framestore NYC</p>
+      <p class="meta-role">Executive Creative Producer</p>
     </div>
-    <div class="feat-meta">
-      <div>
-        <p class="feat-client">Framestore NYC</p>
-        <p class="feat-role">Executive Creative Producer</p>
-      </div>
-      <div>
-        <h2 class="feat-title">Summit at One Vanderbilt</h2>
-        <p class="feat-desc">More than 12 months of production support for the multi-sensory art experience atop One Vanderbilt in Midtown Manhattan. Make Unit worked alongside Framestore NYC across the full production pipeline — from development through on-site delivery — for one of New York City's most ambitious permanent installations.</p>
-        <div class="feat-tags">
-          <span class="tag">Installation</span>
-          <span class="tag">Permanent</span>
-          <span class="tag">New York</span>
-        </div>
-        <a href="https://www.framestore.com/work/unity-and-transcendence" class="feat-link" target="_blank" rel="noopener">View project →</a>
-      </div>
+    <div>
+      <h2 class="meta-title">Summit at One Vanderbilt</h2>
+      <p class="meta-desc">More than 12 months of production support for the multi-sensory art experience atop One Vanderbilt in Midtown Manhattan. Make Unit worked alongside Framestore NYC across the full production pipeline — from development through on-site delivery — for one of New York City's most ambitious permanent installations.</p>
+      <div class="meta-tags"><span class="tag">Installation</span><span class="tag">Permanent</span><span class="tag">New York</span></div>
+      <a href="https://www.framestore.com/work/unity-and-transcendence" class="meta-link" target="_blank" rel="noopener">View project →</a>
     </div>
-    <div class="mosaic mosaic-4">
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_02.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_03.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_04.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_05.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_06.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item wide"><img src="assets/images/onevanderbilt/Gif_clouds.gif" alt="Summit at One Vanderbilt — Clouds" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_07.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_08.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_09.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_10.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_11.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/onevanderbilt-sq/ov_12.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
-    </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-3">
+    <div class="mosaic-item wide"><img src="assets/images/onevanderbilt/skyline.webp" alt="Summit at One Vanderbilt — Skyline" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/onevanderbilt/clouds capture.webp" alt="Summit at One Vanderbilt — Clouds" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/onevanderbilt/testing_office.webp" alt="Summit at One Vanderbilt — Production" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/onevanderbilt/onevanderbilt_still4.jpg" alt="Summit at One Vanderbilt" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/onevanderbilt/Gif_clouds.gif" alt="Summit at One Vanderbilt — Clouds animation" loading="lazy"></div>
+  </div>
+</article>
 
-  <!-- 4. Game of Thrones -->
-  <article class="project-featured">
-    <div class="project-hero">
-      <iframe src="https://www.youtube.com/embed/_TdQkDnOUWw?autoplay=1&mute=1&controls=0&loop=1&playlist=_TdQkDnOUWw" allow="autoplay; fullscreen" allowfullscreen title="Game of Thrones: Beyond the Wall VR"></iframe>
+<!-- 4. Game of Thrones -->
+<article class="project-block">
+  <div class="project-hero">
+    <iframe src="https://www.youtube.com/embed/_TdQkDnOUWw?autoplay=1&mute=1&controls=0&loop=1&playlist=_TdQkDnOUWw" allow="autoplay; fullscreen" allowfullscreen title="Game of Thrones: Beyond the Wall VR"></iframe>
+  </div>
+  <div class="project-meta featured">
+    <div>
+      <p class="meta-client">Framestore / HBO</p>
+      <p class="meta-role">Senior Immersive Producer</p>
     </div>
-    <div class="feat-meta">
-      <div>
-        <p class="feat-client">Framestore / HBO</p>
-        <p class="feat-role">Senior Immersive Producer</p>
-      </div>
-      <div>
-        <h2 class="feat-title">Game of Thrones VR & Magic Leap</h2>
-        <p class="feat-desc">Two experiences celebrating the final season of Game of Thrones, produced with the award-winning team at Framestore — <em>Beyond the Wall</em>, a VR experience, and <em>The Dead Must Die</em>, a Magic Leap Encounter. Launched in AT&T flagship stores across Chicago, Boston, and San Francisco.</p>
-        <div class="feat-tags">
-          <span class="tag">VR</span>
-          <span class="tag">Mixed Reality</span>
-          <span class="tag">Emmy Nominated</span>
-          <span class="tag">AEAF Award</span>
-        </div>
-        <a href="https://www.framestore.com/work/game-thrones-beyond-wall" class="feat-link" target="_blank" rel="noopener">View project →</a>
-      </div>
+    <div>
+      <h2 class="meta-title">Game of Thrones VR & Magic Leap</h2>
+      <p class="meta-desc">Two experiences celebrating the final season of Game of Thrones — <em>Beyond the Wall</em>, a VR experience, and <em>The Dead Must Die</em>, a Magic Leap Encounter. Launched in AT&T flagship stores across Chicago, Boston, and San Francisco. Emmy Nominated, Webby Nominated, AEAF Award.</p>
+      <div class="meta-tags"><span class="tag">VR</span><span class="tag">Mixed Reality</span><span class="tag">Emmy Nominated</span><span class="tag">AEAF Award</span></div>
+      <a href="https://www.framestore.com/work/game-thrones-beyond-wall" class="meta-link" target="_blank" rel="noopener">View project →</a>
     </div>
-    <div class="mosaic mosaic-3">
-      <div class="mosaic-item video wide">
-        <iframe src="https://www.youtube.com/embed/9svghem_55w" allow="fullscreen" allowfullscreen title="Game of Thrones: The Dead Must Die — Magic Leap"></iframe>
-      </div>
-      <div class="mosaic-item"><img src="assets/images/got/got_01.jpg" alt="Game of Thrones: Beyond the Wall" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/got/got_02.jpg" alt="Game of Thrones: Beyond the Wall" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/got/got_03.jpg" alt="Game of Thrones: Beyond the Wall" loading="lazy"></div>
-      <div class="mosaic-item wide"><img src="assets/images/got/got_04.webp" alt="Game of Thrones: Beyond the Wall" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/got/got_05.webp" alt="Game of Thrones: Beyond the Wall" loading="lazy"></div>
+  </div>
+  <div class="mosaic mosaic-3">
+    <div class="mosaic-item video wide">
+      <iframe src="https://www.youtube.com/embed/9svghem_55w" allow="fullscreen" allowfullscreen title="Game of Thrones: The Dead Must Die — Magic Leap"></iframe>
     </div>
-  </article>
+    <div class="mosaic-item"><img src="assets/images/got/got_01.jpg" alt="Game of Thrones" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/got/got_02.jpg" alt="Game of Thrones" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/got/got_03.jpg" alt="Game of Thrones" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/got/got_04.webp" alt="Game of Thrones" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/got/got_05.webp" alt="Game of Thrones" loading="lazy"></div>
+  </div>
+</article>
 
-  <!-- 5. Capital One -->
-  <article class="project-featured">
-    <div class="project-hero">
-      <iframe src="https://player.vimeo.com/video/783788030?autoplay=1&color=fff&title=0&byline=0&portrait=0&background=1" allow="autoplay; fullscreen" allowfullscreen title="Capital One Workplace Brand Visualizations"></iframe>
+<!-- 5. Capital One -->
+<article class="project-block">
+  <div class="project-hero">
+    <iframe src="https://player.vimeo.com/video/783788030?autoplay=1&color=fff&title=0&byline=0&portrait=0&background=1" allow="autoplay; fullscreen" allowfullscreen title="Capital One Workplace Brand Visualizations"></iframe>
+  </div>
+  <div class="project-meta featured">
+    <div>
+      <p class="meta-client">Capital One × HUSH</p>
+      <p class="meta-role">Senior Experiential Producer</p>
     </div>
-    <div class="feat-meta">
-      <div>
-        <p class="feat-client">Capital One × HUSH</p>
-        <p class="feat-role">Senior Experiential Producer</p>
-      </div>
-      <div>
-        <h2 class="feat-title">Workplace Brand Visualizations</h2>
-        <p class="feat-desc">Production support for the permanent installation at Capital One's new headquarters in McLean, Virginia. Working alongside HUSH, Make Unit helped deliver a suite of daily and seasonal data visualizations — creating an ever-changing digital environment across the building's monumental screens.</p>
-        <div class="feat-tags">
-          <span class="tag">Installation</span>
-          <span class="tag">Data Viz</span>
-          <span class="tag">Permanent</span>
-        </div>
-        <a href="https://heyhush.com/work/capital-one-workplace-brand-visualizations/" class="feat-link" target="_blank" rel="noopener">View project →</a>
-      </div>
+    <div>
+      <h2 class="meta-title">Workplace Brand Visualizations</h2>
+      <p class="meta-desc">Production support for the permanent installation at Capital One's new headquarters in McLean, Virginia. Working alongside HUSH, Make Unit helped deliver a suite of daily and seasonal data visualizations — creating an ever-changing digital environment across the building's monumental screens.</p>
+      <div class="meta-tags"><span class="tag">Installation</span><span class="tag">Data Viz</span><span class="tag">Permanent</span></div>
+      <a href="https://heyhush.com/work/capital-one-workplace-brand-visualizations/" class="meta-link" target="_blank" rel="noopener">View project →</a>
     </div>
-    <div class="mosaic mosaic-3">
-      <div class="mosaic-item wide"><img src="assets/images/capitalone/CapitalOne_Final_01.jpg" alt="Capital One" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_02_prod.jpg" alt="Capital One" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_03.jpg" alt="Capital One" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_04.jpg" alt="Capital One" loading="lazy"></div>
-      <div class="mosaic-item wide"><img src="assets/images/capitalone/CapitalOne_Final_05_prod.jpg" alt="Capital One" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_06.jpg" alt="Capital One" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_07_prod.jpg" alt="Capital One" loading="lazy"></div>
-    </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-3">
+    <div class="mosaic-item wide"><img src="assets/images/capitalone/CapitalOne_Final_01.jpg" alt="Capital One" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_02_prod.jpg" alt="Capital One" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_03.jpg" alt="Capital One" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_04.jpg" alt="Capital One" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/capitalone/CapitalOne_Final_05_prod.jpg" alt="Capital One" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_06.jpg" alt="Capital One" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/capitalone/CapitalOne_Final_07_prod.jpg" alt="Capital One" loading="lazy"></div>
+  </div>
+</article>
 
-  <!-- 6. Inside Abbey Road -->
-  <article class="project-featured">
-    <div class="project-hero">
-      <iframe src="https://www.youtube.com/embed/16KaEul9u94?autoplay=1&mute=1&controls=0&loop=1&playlist=16KaEul9u94" allow="autoplay; fullscreen" allowfullscreen title="Inside Abbey Road"></iframe>
+<!-- 6. Inside Abbey Road -->
+<article class="project-block">
+  <div class="project-hero">
+    <iframe src="https://www.youtube.com/embed/16KaEul9u94?autoplay=1&mute=1&controls=0&loop=1&playlist=16KaEul9u94" allow="autoplay; fullscreen" allowfullscreen title="Inside Abbey Road"></iframe>
+  </div>
+  <div class="project-meta featured">
+    <div>
+      <p class="meta-client">Google Creative Lab</p>
+      <p class="meta-role">Lead Producer · 2014–2015</p>
     </div>
-    <div class="feat-meta">
-      <div>
-        <p class="feat-client">Google Creative Lab</p>
-        <p class="feat-role">Lead Producer · 2014–2015</p>
-      </div>
-      <div>
-        <h2 class="feat-title">Inside Abbey Road</h2>
-        <p class="feat-desc">Production support for a Street View experience that opened the doors of the iconic British recording studios for the first time. The production used WebGL, CSS3 and Three.js to create fully immersive 3D rooms with positional audio — all in-browser.</p>
-        <div class="feat-tags">
-          <span class="tag">WebVR</span>
-          <span class="tag">WebGL</span>
-          <span class="tag">Google Creative Lab</span>
-        </div>
-        <a href="https://artsandculture.google.com/project/abbey-road" class="feat-link" target="_blank" rel="noopener">View project →</a>
-      </div>
+    <div>
+      <h2 class="meta-title">Inside Abbey Road</h2>
+      <p class="meta-desc">Production support for a Street View experience that opened the doors of the iconic British recording studios for the first time. The production used WebGL, CSS3 and Three.js to create fully immersive 3D rooms with positional audio — all in-browser.</p>
+      <div class="meta-tags"><span class="tag">WebVR</span><span class="tag">WebGL</span><span class="tag">Google Creative Lab</span></div>
+      <a href="https://artsandculture.google.com/project/abbey-road" class="meta-link" target="_blank" rel="noopener">View project →</a>
     </div>
-    <div class="mosaic mosaic-3">
-      <div class="mosaic-item wide"><img src="assets/images/abbeyroad-sq/abbeyroad_hero.jpg" alt="Inside Abbey Road" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_desktop.jpg" alt="Inside Abbey Road" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_inside.jpg" alt="Inside Abbey Road" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_mobile.jpg" alt="Inside Abbey Road" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_oldstreet.jpg" alt="Inside Abbey Road" loading="lazy"></div>
-      <div class="mosaic-item wide"><img src="assets/images/abbeyroad-sq/abbeyroad_screengrabs.jpg" alt="Inside Abbey Road" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_poster.jpg" alt="Inside Abbey Road" loading="lazy"></div>
-      <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_instu.jpg" alt="Inside Abbey Road" loading="lazy"></div>
-    </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-3">
+    <div class="mosaic-item wide"><img src="assets/images/abbeyroad-sq/abbeyroad_hero.jpg" alt="Inside Abbey Road" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_desktop.jpg" alt="Inside Abbey Road" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_inside.jpg" alt="Inside Abbey Road" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_mobile.jpg" alt="Inside Abbey Road" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_oldstreet.jpg" alt="Inside Abbey Road" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/abbeyroad-sq/abbeyroad_screengrabs.jpg" alt="Inside Abbey Road" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_poster.jpg" alt="Inside Abbey Road" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/abbeyroad-sq/abbeyroad_instu.jpg" alt="Inside Abbey Road" loading="lazy"></div>
+  </div>
+</article>
 
-</div>
+<!-- ═══════════════ MORE WORK ═══════════════ -->
+<p class="section-divider">More work</p>
 
-<!-- ─── MORE WORK ─── -->
-<p class="projects-label">More work</p>
-<div class="projects">
+<!-- HBO My Daemon -->
+<article class="project-block secondary">
+  <div class="project-hero">
+    <img src="assets/images/hbo-my-daemon.png" alt="His Dark Materials — My Daemon">
+  </div>
+  <div class="project-meta secondary">
+    <div>
+      <p class="meta-client">HBO × Framestore</p>
+      <p class="meta-role">Producer · 2020</p>
+    </div>
+    <div>
+      <h2 class="meta-title">His Dark Materials — My Daemon</h2>
+      <p class="meta-desc">An augmented reality app that combined wellbeing with the rich narrative of His Dark Materials. Users bonded with a personal dæmon — choosing from a range of animals that responded to real-world activity and mood.</p>
+      <div class="meta-tags"><span class="tag">AR</span><span class="tag">iOS</span><span class="tag">HBO</span></div>
+    </div>
+  </div>
+</article>
 
-  <article class="project">
-    <div class="project-media">
-      <img src="assets/images/hbo-my-daemon.png" alt="HBO His Dark Materials — My Daemon" loading="lazy">
+<!-- Facebook Share Your Voice -->
+<article class="project-block secondary">
+  <div class="project-hero">
+    <img src="assets/images/facebook-share-your-voice.jpg" alt="Facebook Share Your Voice">
+  </div>
+  <div class="project-meta secondary">
+    <div>
+      <p class="meta-client">Facebook × HUSH</p>
+      <p class="meta-role">Producer · 2020</p>
     </div>
-    <div class="project-info">
-      <p class="project-client">HBO × Framestore</p>
-      <h2 class="project-title">His Dark Materials — My Daemon</h2>
-      <p class="project-desc">An augmented reality app that combined wellbeing with the rich narrative of His Dark Materials. Users bonded with a personal dæmon — choosing from a range of animals that responded to real-world activity and mood. Produced with Framestore in 2020.</p>
-      <div class="project-tags"><span class="tag">AR</span><span class="tag">iOS</span><span class="tag">HBO</span></div>
+    <div>
+      <h2 class="meta-title">Share Your Voice</h2>
+      <p class="meta-desc">A corporate event installation at Facebook HQ where attendees could create a unique voice signature and watch it displayed on the centre stage of the event. Designed by HUSH, produced by Make Unit.</p>
+      <div class="meta-tags"><span class="tag">Live Event</span><span class="tag">Interactive</span><span class="tag">Installation</span></div>
     </div>
-  </article>
+  </div>
+</article>
 
-  <article class="project">
-    <div class="project-media">
-      <img src="assets/images/facebook-share-your-voice.jpg" alt="Facebook Share Your Voice" loading="lazy">
+<!-- Mountain Dew -->
+<article class="project-block secondary">
+  <div class="project-hero">
+    <iframe src="https://www.youtube.com/embed/giXkSG9UzrA" allow="fullscreen" allowfullscreen title="Mountain Dew DEWcision VR"></iframe>
+  </div>
+  <div class="project-meta secondary">
+    <div>
+      <p class="meta-client">Mountain Dew × Firstborn</p>
+      <p class="meta-role">Production Manager · 2016</p>
     </div>
-    <div class="project-info">
-      <p class="project-client">Facebook × HUSH</p>
-      <h2 class="project-title">Share Your Voice</h2>
-      <p class="project-desc">A corporate event installation at Facebook HQ where attendees could create a unique voice signature and watch it displayed on the centre stage. Designed by HUSH, produced by Make Unit in 2020.</p>
-      <div class="project-tags"><span class="tag">Live Event</span><span class="tag">Interactive</span><span class="tag">Installation</span></div>
+    <div>
+      <h2 class="meta-title">DEWcision VR — NASCAR Experience</h2>
+      <p class="meta-desc">Production management for an Unreal Engine VR experience where fans picked their Mountain Dew flavor by racing with Dale Earnhardt Jr. at Nascar events.</p>
+      <div class="meta-tags"><span class="tag">VR</span><span class="tag">Unreal Engine</span><span class="tag">Production</span></div>
     </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-2">
+    <div class="mosaic-item wide"><img src="assets/images/mountain-dew.jpg" alt="Mountain Dew DEWcision" loading="lazy"></div>
+  </div>
+</article>
 
-  <article class="project">
-    <div class="project-media project-media-video">
-      <iframe src="https://www.youtube.com/embed/giXkSG9UzrA" allow="fullscreen" allowfullscreen title="Mountain Dew DEWcision VR"></iframe>
+<!-- Cadillac VR -->
+<article class="project-block secondary">
+  <div class="project-hero">
+    <iframe src="https://www.youtube.com/embed/l14xYSiSnZE" allow="fullscreen" allowfullscreen title="Cadillac in Virtual Reality"></iframe>
+  </div>
+  <div class="project-meta secondary">
+    <div>
+      <p class="meta-client">Cadillac × Publicis NA</p>
+      <p class="meta-role">Producer · 2017</p>
     </div>
-    <div class="project-info">
-      <p class="project-client">Mountain Dew × Firstborn</p>
-      <h2 class="project-title">DEWcision VR — NASCAR Experience</h2>
-      <p class="project-desc">Production management for an Unreal Engine VR experience where fans picked their Mountain Dew flavor by racing with Dale Earnhardt Jr. at Nascar events.</p>
-      <div class="project-tags"><span class="tag">VR</span><span class="tag">Unreal Engine</span><span class="tag">Production</span></div>
+    <div>
+      <h2 class="meta-title">Cadillac in Virtual Reality</h2>
+      <p class="meta-desc">A VR car configurator for Cadillac dealerships across the United States. Shot on location in New York using 360 photography in a cinematic nighttime environment. Produced with Publicis NA and All Things Media.</p>
+      <div class="meta-tags"><span class="tag">VR</span><span class="tag">360 Photography</span><span class="tag">Automotive</span></div>
     </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-3">
+    <div class="mosaic-item"><img src="assets/images/cadillac/cadillac_01.jpg" alt="Cadillac VR" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/cadillac-sq/cadillac_gesell2.jpg" alt="Cadillac VR" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/cadillac-sq/cadillac_gesell3.jpg" alt="Cadillac VR" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/cadillac-sq/cadillac_gesell4.jpg" alt="Cadillac VR" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/cadillac-sq/cadillac_gesell5.jpg" alt="Cadillac VR" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/cadillac-sq/cadillac_gesell6.jpg" alt="Cadillac VR" loading="lazy"></div>
+  </div>
+</article>
 
-  <article class="project">
-    <div class="project-media project-media-video">
-      <iframe src="https://www.youtube.com/embed/l14xYSiSnZE" allow="fullscreen" allowfullscreen title="Cadillac in Virtual Reality"></iframe>
+<!-- Jackie Robinson -->
+<article class="project-block secondary">
+  <div class="project-hero">
+    <iframe src="https://www.youtube.com/embed/3MQ9yG_QfDA" allow="fullscreen" allowfullscreen title="Jackie Robinson VR — Google Expeditions"></iframe>
+  </div>
+  <div class="project-meta secondary">
+    <div>
+      <p class="meta-client">Google Creative Lab</p>
+      <p class="meta-role">Producer · 2016</p>
     </div>
-    <div class="project-info">
-      <p class="project-client">Cadillac × Publicis NA</p>
-      <h2 class="project-title">Cadillac in Virtual Reality</h2>
-      <p class="project-desc">A VR car configurator for Cadillac dealerships across the United States. Shot on location in New York using 360 photography in a cinematic nighttime environment.</p>
-      <div class="project-tags"><span class="tag">VR</span><span class="tag">360 Photography</span><span class="tag">Automotive</span></div>
+    <div>
+      <h2 class="meta-title">Jackie Robinson VR — Google Expeditions</h2>
+      <p class="meta-desc">Make Unit helped Google Creative Lab develop the Jackie Robinson VR experience for the Google Expeditions platform, in collaboration with Ken Burns and his documentary. Featured in Daily News, NBC News and Yahoo Sports.</p>
+      <div class="meta-tags"><span class="tag">VR</span><span class="tag">Education</span><span class="tag">Google Cardboard</span></div>
     </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-3">
+    <div class="mosaic-item wide"><img src="assets/images/jackierobinson/jackierobinson_01.jpg" alt="Jackie Robinson VR" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/jackierobinson/jackierobinson_02.jpg" alt="Jackie Robinson VR" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/jackierobinson/jackierobinson_03.jpg" alt="Jackie Robinson VR" loading="lazy"></div>
+  </div>
+</article>
 
-  <article class="project">
-    <div class="project-media project-media-video">
-      <iframe src="https://www.youtube.com/embed/3MQ9yG_QfDA" allow="fullscreen" allowfullscreen title="Jackie Robinson VR — Google Expeditions"></iframe>
+<!-- UCB Chelsea -->
+<article class="project-block secondary">
+  <div class="project-hero">
+    <img src="assets/images/ucb/ucb_01.jpg" alt="UCB Chelsea — 360 Capture">
+  </div>
+  <div class="project-meta secondary">
+    <div>
+      <p class="meta-client">Upright Citizens Brigade</p>
+      <p class="meta-role">360 Capture · 2018</p>
     </div>
-    <div class="project-info">
-      <p class="project-client">Google Creative Lab</p>
-      <h2 class="project-title">Jackie Robinson VR — Google Expeditions</h2>
-      <p class="project-desc">Make Unit helped Google Creative Lab develop the Jackie Robinson VR experience for the Google Expeditions platform, in collaboration with Ken Burns and his documentary. Featured in Daily News, NBC News and Yahoo Sports.</p>
-      <div class="project-tags"><span class="tag">VR</span><span class="tag">Education</span><span class="tag">Google Cardboard</span></div>
+    <div>
+      <h2 class="meta-title">UCB Chelsea — 360 Capture</h2>
+      <p class="meta-desc">360 capture of the legendary Upright Citizens Brigade theatre in Chelsea before its closure — preserving the historic comedy venue in immersive photography.</p>
+      <div class="meta-tags"><span class="tag">360 Photography</span><span class="tag">Preservation</span><span class="tag">New York</span></div>
     </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-3">
+    <div class="mosaic-item wide"><img src="assets/images/ucb/ucb_02.jpg" alt="UCB Chelsea" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/ucb/ucb_03.jpg" alt="UCB Chelsea" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/ucb/ucb_04.jpg" alt="UCB Chelsea" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/ucb/ucb_05.jpg" alt="UCB Chelsea" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/ucb/ucb_06.jpg" alt="UCB Chelsea" loading="lazy"></div>
+  </div>
+</article>
 
-  <article class="project">
-    <div class="project-media">
-      <img src="assets/images/ucb/ucb_01.jpg" alt="UCB Chelsea — 360 Capture" loading="lazy">
+<!-- Imagination Beijing -->
+<article class="project-block secondary">
+  <div class="project-hero">
+    <iframe src="https://www.youtube.com/embed/-M3w9UGUhYU" allow="fullscreen" allowfullscreen title="Big Interactive Shows — Imagination Beijing"></iframe>
+  </div>
+  <div class="project-meta secondary">
+    <div>
+      <p class="meta-client">Imagination</p>
+      <p class="meta-role">Production Support · 2013–2014</p>
     </div>
-    <div class="project-info">
-      <p class="project-client">Upright Citizens Brigade</p>
-      <h2 class="project-title">UCB Chelsea — 360 Capture</h2>
-      <p class="project-desc">360 capture of the legendary Upright Citizens Brigade theatre in Chelsea before its closure — preserving the historic comedy venue in immersive photography.</p>
-      <div class="project-tags"><span class="tag">360 Photography</span><span class="tag">Preservation</span><span class="tag">New York</span></div>
+    <div>
+      <h2 class="meta-title">Big Interactive Shows — Beijing & New Delhi</h2>
+      <p class="meta-desc">Production support for large-scale live events experienced by millions. Make Unit managed content development and on-site digital delivery for a 50×6m LED screen in Beijing and New Delhi.</p>
+      <div class="meta-tags"><span class="tag">Live Events</span><span class="tag">Interactive</span><span class="tag">LED Installation</span></div>
     </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-3">
+    <div class="mosaic-item wide"><img src="assets/images/imagination/imagination_01.jpg" alt="Imagination Beijing" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/imagination/imagination_02.jpg" alt="Imagination Beijing" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/imagination/imagination_03.jpg" alt="Imagination Beijing" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/imagination/imagination_04.jpg" alt="Imagination Beijing" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="assets/images/imagination/imagination_05.jpg" alt="Imagination Beijing" loading="lazy"></div>
+    <div class="mosaic-item"><img src="assets/images/imagination/imagination_06.jpg" alt="Imagination Beijing" loading="lazy"></div>
+  </div>
+</article>
 
-  <article class="project">
-    <div class="project-media project-media-video">
-      <iframe src="https://www.youtube.com/embed/-M3w9UGUhYU" allow="fullscreen" allowfullscreen title="Big Interactive Shows — Imagination Beijing"></iframe>
+<!-- Kipling -->
+<article class="project-block secondary">
+  <div class="project-hero">
+    <img src="assets/images/kipling.jpg" alt="Kipling Interactive Windows">
+  </div>
+  <div class="project-meta secondary">
+    <div>
+      <p class="meta-client">Kipling × The Rumpus Room</p>
+      <p class="meta-role">Producer</p>
     </div>
-    <div class="project-info">
-      <p class="project-client">Imagination</p>
-      <h2 class="project-title">Big Interactive Shows — Beijing & New Delhi</h2>
-      <p class="project-desc">Production support for large-scale live events experienced by millions. Make Unit managed content development and on-site digital delivery for a 50×6m LED screen in Beijing and New Delhi.</p>
-      <div class="project-tags"><span class="tag">Live Events</span><span class="tag">Interactive</span><span class="tag">LED Installation</span></div>
+    <div>
+      <h2 class="meta-title">Interactive Christmas Windows</h2>
+      <p class="meta-desc">A Christmas activation where shoppers could touch the store window, get their picture taken, apply a filter and watch it integrate into the live animation on screen. Developed in Cinder C++.</p>
+      <div class="meta-tags"><span class="tag">Interactive</span><span class="tag">Cinder C++</span><span class="tag">Retail</span></div>
     </div>
-  </article>
+  </div>
+  <div class="mosaic mosaic-2">
+    <div class="mosaic-item wide"><img src="assets/images/kipling/kipling_02.jpg" alt="Kipling making-of" loading="lazy"></div>
+  </div>
+</article>
 
-  <article class="project">
-    <div class="project-media">
-      <img src="assets/images/kipling.jpg" alt="Kipling Interactive Windows" loading="lazy">
+<!-- Tate Britain -->
+<article class="project-block secondary">
+  <div class="project-hero">
+    <iframe src="https://player.vimeo.com/video/97738463?color=fff&title=0&byline=0&portrait=0" allow="fullscreen" allowfullscreen title="Meet Tate Britain"></iframe>
+  </div>
+  <div class="project-meta secondary">
+    <div>
+      <p class="meta-client">The Rumpus Room × The Brooklyn Brothers</p>
+      <p class="meta-role">Producer · 2013</p>
     </div>
-    <div class="project-info">
-      <p class="project-client">Kipling × The Rumpus Room</p>
-      <h2 class="project-title">Interactive Christmas Windows</h2>
-      <p class="project-desc">A Christmas activation where shoppers could touch the store window, get their picture taken, apply a filter and watch it integrate into the live animation on screen. Developed in Cinder C++.</p>
-      <div class="project-tags"><span class="tag">Interactive</span><span class="tag">Cinder C++</span><span class="tag">Retail</span></div>
+    <div>
+      <h2 class="meta-title">Meet Tate Britain</h2>
+      <p class="meta-desc">A digital installation for Tate Britain's £45m relaunch — interlacing real-time photographic submissions from the public with 500 years of British Art.</p>
+      <div class="meta-tags"><span class="tag">Installation</span><span class="tag">Interactive</span><span class="tag">Gallery</span></div>
     </div>
-  </article>
-
-  <article class="project">
-    <div class="project-media project-media-video">
-      <iframe src="https://player.vimeo.com/video/97738463?color=fff&title=0&byline=0&portrait=0" allow="fullscreen" allowfullscreen title="Meet Tate Britain"></iframe>
-    </div>
-    <div class="project-info">
-      <p class="project-client">The Rumpus Room × The Brooklyn Brothers</p>
-      <h2 class="project-title">Meet Tate Britain</h2>
-      <p class="project-desc">A digital installation for Tate Britain's £45m relaunch — interlacing real-time photographic submissions from the public with 500 years of British Art.</p>
-      <div class="project-tags"><span class="tag">Installation</span><span class="tag">Interactive</span><span class="tag">Gallery</span></div>
-    </div>
-  </article>
-
-</div>
+  </div>
+  <div class="mosaic mosaic-2">
+    <div class="mosaic-item wide"><img src="assets/images/tate/tate_01.jpg" alt="Meet Tate Britain" loading="lazy"></div>
+  </div>
+</article>
 
 <footer>
   <span class="footer-copy">© 2026 Make Unit Inc.</span>
