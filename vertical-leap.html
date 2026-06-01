@@ -31,10 +31,11 @@
   .hero-cta:hover { background: var(--blue); }
 
   /* STATS */
-  .stats { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border-bottom: 1px solid var(--rule); }
-  .stat { padding: 2.5rem; border: 1px solid var(--rule); }
+  .stats { background: var(--ink); color: #fff; }
+  .stats-inner { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .stat { padding: 2.5rem; border: 1px solid rgba(255,255,255,0.1); }
   .stat-num { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.03em; color: var(--blue); line-height: 1; margin-bottom: 0.5rem; }
-  .stat-label { font-size: 0.75rem; font-weight: 400; color: var(--mid-dark); line-height: 1.5; }
+  .stat-label { font-size: 0.75rem; font-weight: 400; color: rgba(255,255,255,0.6); line-height: 1.5; }
 
   /* SECTION */
   .section { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; border-bottom: 1px solid var(--rule); }
@@ -44,20 +45,25 @@
   .section-body strong { font-weight: 600; color: var(--ink); }
 
   /* CURRICULUM */
+  .curriculum-section { background: var(--blue); color: #fff; }
+  .curriculum-section .section-eyebrow { color: rgba(255,255,255,0.6); }
+  .curriculum-section .section-title { color: #fff; }
+  .curriculum-section .section-body { color: rgba(255,255,255,0.8); }
   .curriculum { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 3rem; }
-  .curriculum-item { border: 1px solid var(--rule); padding: 2rem; }
-  .curriculum-num { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: var(--mid); margin-bottom: 1rem; }
-  .curriculum-title { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .curriculum-item { background: rgba(255,255,255,0.1); padding: 2rem; }
+  .curriculum-num { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+  .curriculum-title { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.75rem; color: #fff; }
   .curriculum-list { list-style: none; }
-  .curriculum-list li { font-size: 0.875rem; font-weight: 300; color: var(--mid-dark); padding: 0.4rem 0; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 0.75rem; }
+  .curriculum-list li { font-size: 0.875rem; font-weight: 300; color: rgba(255,255,255,0.75); padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; gap: 0.75rem; }
   .curriculum-list li:last-child { border-bottom: none; }
-  .curriculum-list li::before { content: ''; width: 5px; height: 5px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
+  .curriculum-list li::before { content: ''; width: 5px; height: 5px; background: #fff; border-radius: 50%; flex-shrink: 0; }
 
   /* SPEAKERS */
   .speakers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 3rem; }
   .speaker { display: flex; flex-direction: column; }
-  .speaker-photo { width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block; filter: grayscale(100%); margin-bottom: 1.25rem; transition: filter 0.3s; }
+  .speaker-photo { width: 100%; aspect-ratio: 9/16; object-fit: cover; object-position: center top; display: block; filter: grayscale(100%); margin-bottom: 1.25rem; transition: filter 0.3s; }
   .speaker-photo:hover { filter: grayscale(0%); }
+  .speaker-photo.pos-right { object-position: right top; }
   .speaker-photo-placeholder { width: 100%; aspect-ratio: 9/16; background: var(--light); display: block; margin-bottom: 1.25rem; }
   .speaker-info { padding: 0 0.5rem 1.5rem; }
   .speaker-name { font-size: 1rem; font-weight: 900; letter-spacing: -0.01em; margin-bottom: 0.2rem; }
@@ -78,7 +84,7 @@
     nav { padding: 0.75rem 1rem; }
     .nav-logo img { height: 18px; }
     .hero { padding: 4rem 1.5rem 3.5rem; }
-    .stats { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .stats-inner { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
     .section { padding: 3.5rem 1.5rem; }
     .curriculum { grid-template-columns: 1fr; }
     .speakers { grid-template-columns: repeat(2, 1fr); }
@@ -106,17 +112,19 @@
   </section>
 
   <div class="stats">
-    <div class="stat">
-      <p class="stat-num">$8.4B</p>
-      <p class="stat-label">Global vertical drama market by 2031 (from $4.17B in 2024)</p>
-    </div>
-    <div class="stat">
-      <p class="stat-num">45min</p>
-      <p class="stat-label">Average daily engagement per session on vertical drama platforms</p>
-    </div>
-    <div class="stat">
-      <p class="stat-num">40M+</p>
-      <p class="stat-label">Users on dedicated vertical drama platforms globally</p>
+    <div class="stats-inner">
+      <div class="stat">
+        <p class="stat-num">$8.4B</p>
+        <p class="stat-label">Global vertical drama market by 2031 (from $4.17B in 2024)</p>
+      </div>
+      <div class="stat">
+        <p class="stat-num">45min</p>
+        <p class="stat-label">Average daily engagement per session on vertical drama platforms</p>
+      </div>
+      <div class="stat">
+        <p class="stat-num">40M+</p>
+        <p class="stat-label">Users on dedicated vertical drama platforms globally</p>
+      </div>
     </div>
   </div>
 
@@ -126,7 +134,7 @@
     <p class="section-body">Low cost, fast testing, immediate audience feedback. A vertical series lets you build a world, find your audience, and prove your concept before committing to a full production. <strong>The most successful genre is some version of telenovelas</strong> — a language with a long-standing tradition in the Latin community, now exploding globally through mobile-first platforms.<br><br>Disney+ announced mobile vertical video integration at CES 2026. The window is open.</p>
   </section>
 
-  <section class="section">
+  <section class="section curriculum-section">
     <p class="section-eyebrow">Curriculum</p>
     <h2 class="section-title">Four pillars. One complete pipeline.</h2>
     <div class="curriculum">
@@ -174,7 +182,7 @@
     <h2 class="section-title">Industry practitioners, not academics.</h2>
     <div class="speakers">
       <div class="speaker">
-        <img src="assets/images/luz_orlando_brennan.webp" alt="Luz Orlando Brennan" class="speaker-photo">
+        <img src="assets/images/luz_orlando_brennan.webp" alt="Luz Orlando Brennan" class="speaker-photo pos-right">
         <div class="speaker-info">
           <p class="speaker-name">Luz Orlando Brennan</p>
           <p class="speaker-role">Director · Writer · Producer</p>
