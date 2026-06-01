@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vertical Leap — Make Unit</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="icon" type="image/webp" href="favicon.webp">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 3rem; border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); }
+  .nav-logo img { height: 22px; display: block; }
+
+  /* HERO */
+  .hero { padding: 7rem 3rem 6rem; max-width: 900px; margin: 0 auto; border-bottom: 1px solid var(--rule); }
+  .hero-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--blue); }
+  .hero-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; line-height: 1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+  .hero-title em { font-style: normal; color: var(--blue); }
+  .hero-subtitle { font-size: 1rem; font-weight: 400; color: var(--mid); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+  .hero-desc { font-size: 1.15rem; font-weight: 300; color: var(--mid-dark); max-width: 56ch; line-height: 1.75; margin-bottom: 3rem; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: var(--ink); color: var(--bg); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.15s; }
+  .hero-cta:hover { background: var(--blue); }
+
+  /* STATS */
+  .stats { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; border-bottom: 1px solid var(--rule); }
+  .stat { padding: 2.5rem; border: 1px solid var(--rule); }
+  .stat-num { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.03em; color: var(--blue); line-height: 1; margin-bottom: 0.5rem; }
+  .stat-label { font-size: 0.75rem; font-weight: 400; color: var(--mid-dark); line-height: 1.5; }
+
+  /* SECTION */
+  .section { max-width: 900px; margin: 0 auto; padding: 5rem 3rem; border-bottom: 1px solid var(--rule); }
+  .section-eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.5rem; }
+  .section-title { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+  .section-body { font-size: 1rem; font-weight: 300; color: var(--mid-dark); line-height: 1.8; max-width: 60ch; }
+  .section-body strong { font-weight: 600; color: var(--ink); }
+
+  /* CURRICULUM */
+  .curriculum { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 3rem; }
+  .curriculum-item { border: 1px solid var(--rule); padding: 2rem; }
+  .curriculum-num { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: var(--mid); margin-bottom: 1rem; }
+  .curriculum-title { font-size: 1.1rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .curriculum-list { list-style: none; }
+  .curriculum-list li { font-size: 0.875rem; font-weight: 300; color: var(--mid-dark); padding: 0.4rem 0; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 0.75rem; }
+  .curriculum-list li:last-child { border-bottom: none; }
+  .curriculum-list li::before { content: ''; width: 5px; height: 5px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
+
+  /* SPEAKERS */
+  .speakers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-top: 3rem; }
+  .speaker { display: flex; gap: 1.5rem; align-items: start; }
+  .speaker-photo { width: 80px; height: 80px; object-fit: cover; border-radius: 2px; flex-shrink: 0; filter: grayscale(100%); }
+  .speaker-photo-placeholder { width: 80px; height: 80px; background: var(--light); border-radius: 2px; flex-shrink: 0; }
+  .speaker-name { font-size: 1rem; font-weight: 900; letter-spacing: -0.01em; margin-bottom: 0.2rem; }
+  .speaker-role { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+  .speaker-bio { font-size: 0.8rem; font-weight: 300; color: var(--mid-dark); line-height: 1.6; }
+
+  /* CTA SECTION */
+  .cta-section { max-width: 900px; margin: 0 auto; padding: 6rem 3rem; text-align: center; }
+  .cta-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin-bottom: 1.5rem; }
+  .cta-body { font-size: 1rem; font-weight: 300; color: var(--mid-dark); margin-bottom: 2.5rem; }
+  .cta-email { display: inline-block; font-size: 1.25rem; font-weight: 600; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--blue); padding-bottom: 0.2rem; transition: color 0.15s; }
+  .cta-email:hover { color: var(--blue); }
+
+  footer { border-top: 1px solid var(--rule); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; }
+  .footer-copy { font-size: 0.75rem; color: var(--mid); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0.75rem 1rem; }
+    .nav-logo img { height: 18px; }
+    .hero { padding: 4rem 1.5rem 3.5rem; }
+    .stats { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .section { padding: 3.5rem 1.5rem; }
+    .curriculum { grid-template-columns: 1fr; }
+    .speakers { grid-template-columns: 1fr; gap: 2rem; }
+    .cta-section { padding: 4rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-wordmark.png" alt="Make Unit" />
+  </a>
+</nav>
+
+<main>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Make Unit Education</p>
+    <h1 class="hero-title">The <em>Vertical</em> Leap</h1>
+    <p class="hero-subtitle">Writing · Production · AI · Real-Time · Growth</p>
+    <p class="hero-desc">Becoming a full-stack filmmaker for vertical drama. The industry has moved vertical — shorter formats, faster interaction, AI acceleration throughout the pipeline. This is how you get ahead of it.</p>
+    <a href="#contact" class="hero-cta">Get in touch →&#xFE0E;</a>
+  </section>
+
+  <div class="stats">
+    <div class="stat">
+      <p class="stat-num">$8.4B</p>
+      <p class="stat-label">Global vertical drama market by 2031 (from $4.17B in 2024)</p>
+    </div>
+    <div class="stat">
+      <p class="stat-num">45min</p>
+      <p class="stat-label">Average daily engagement per session on vertical drama platforms</p>
+    </div>
+    <div class="stat">
+      <p class="stat-num">40M+</p>
+      <p class="stat-label">Users on dedicated vertical drama platforms globally</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <p class="section-eyebrow">The Opportunity</p>
+    <h2 class="section-title">Vertical drama is the new IP laboratory.</h2>
+    <p class="section-body">Low cost, fast testing, immediate audience feedback. A vertical series lets you build a world, find your audience, and prove your concept before committing to a full production. <strong>The most successful genre is some version of telenovelas</strong> — a language with a long-standing tradition in the Latin community, now exploding globally through mobile-first platforms.<br><br>Disney+ announced mobile vertical video integration at CES 2026. The window is open.</p>
+  </section>
+
+  <section class="section">
+    <p class="section-eyebrow">Curriculum</p>
+    <h2 class="section-title">Four pillars. One complete pipeline.</h2>
+    <div class="curriculum">
+      <div class="curriculum-item">
+        <p class="curriculum-num">01</p>
+        <h3 class="curriculum-title">Writing</h3>
+        <ul class="curriculum-list">
+          <li>Vertical drama structure</li>
+          <li>Hooks & super hooks</li>
+          <li>Melodrama techniques</li>
+        </ul>
+      </div>
+      <div class="curriculum-item">
+        <p class="curriculum-num">02</p>
+        <h3 class="curriculum-title">Producing</h3>
+        <ul class="curriculum-list">
+          <li>The production cycle</li>
+          <li>Full-stack toolkit</li>
+          <li>Vertical budgets</li>
+        </ul>
+      </div>
+      <div class="curriculum-item">
+        <p class="curriculum-num">03</p>
+        <h3 class="curriculum-title">Brand Building</h3>
+        <ul class="curriculum-list">
+          <li>Brand development</li>
+          <li>Audience acquisition</li>
+          <li>Extended universe</li>
+        </ul>
+      </div>
+      <div class="curriculum-item">
+        <p class="curriculum-num">04</p>
+        <h3 class="curriculum-title">AI Collaboration</h3>
+        <ul class="curriculum-list">
+          <li>Pitch decks & story expansion</li>
+          <li>Teaser production</li>
+          <li>AI-driven marketing plans</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-eyebrow">Instructors</p>
+    <h2 class="section-title">Industry practitioners, not academics.</h2>
+    <div class="speakers">
+      <div class="speaker">
+        <img src="assets/images/luz_orlando_brennan.webp" alt="Luz Orlando Brennan" class="speaker-photo">
+        <div>
+          <p class="speaker-name">Luz Orlando Brennan</p>
+          <p class="speaker-role">Director · Writer · Producer</p>
+          <p class="speaker-bio">Award-winning filmmaker. <em>La Estrella que Perdí</em> — Best Feature, Cine Las Américas 2025. Credits include <em>Muerte en Buenos Aires</em>, <em>El Prófugo</em> (Berlinale), <em>Dior</em> (Annecy). Trained at ENERC and UBA.</p>
+        </div>
+      </div>
+      <div class="speaker">
+        <img src="assets/images/verticalleap/eze.jpg" alt="Ezequiel Asnaghi" class="speaker-photo">
+        <div>
+          <p class="speaker-name">Ezequiel Asnaghi</p>
+          <p class="speaker-role">Producer · Writer · Actor</p>
+          <p class="speaker-bio">Founder of Make Unit. 20+ years in entertainment. Credits: <em>Game of Thrones: Beyond the Wall VR</em> (HBO/Framestore, Emmy-nominated), Science Museum London, Google Creative Lab.</p>
+        </div>
+      </div>
+      <div class="speaker">
+        <img src="assets/images/verticalleap/matthias.jpg" alt="Matthias Metternich" class="speaker-photo">
+        <div>
+          <p class="speaker-name">Matthias Metternich</p>
+          <p class="speaker-role">Brand Builder</p>
+          <p class="speaker-bio">Former CEO of Kiala (top greens brand on TikTok & Amazon). Co-founded Art of Sport with Kobe Bryant. Expert in algorithms, influencers, affiliates, and retail scaling.</p>
+        </div>
+      </div>
+      <div class="speaker">
+        <img src="assets/images/verticalleap/carina.png" alt="Carina Haller" class="speaker-photo">
+        <div>
+          <p class="speaker-name">Carina Haller</p>
+          <p class="speaker-role">Global Marketing Specialist</p>
+          <p class="speaker-bio">Co-producer, LA Brazilian Film Festival (18 seasons). Warner Bros. campaigns: Barbie, Dune, Minecraft. Video game franchises: World of Warcraft, Pac-Man.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contact">
+    <h2 class="cta-title">Ready to make the leap?</h2>
+    <p class="cta-body">Get in touch to learn about the next cohort, pricing, and dates.</p>
+    <a href="mailto:hello@makeunit.com" class="cta-email">hello@makeunit.com</a>
+  </section>
+
+</main>
+
+<footer>
+  <span class="footer-copy">© 2026 Make Unit Inc.</span>
+</footer>
+
+</body>
+</html>
